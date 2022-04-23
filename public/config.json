@@ -1,0 +1,2314 @@
+{
+  "title": "臻善科技WebGIS图形平台",
+  "_theme": "classical",
+  "map": {
+    "mapType": "2D",
+    "position": {
+      "left": 0.0,
+      "top": 0.0,
+      "right": 0.0,
+      "bottom": 0.0
+    },
+    "tables": {
+      "SLXX": {
+        "tablename": "SLXX",
+        "titlefield": "SQR",
+        "infofield": "SQJFDZ",
+        "valuefield": "ZJDMJ",
+        "alias": {
+          "SQR": "申请人",
+          "SQJFDZ": "申请建房地址",
+          "ZJDMJ": "宅基地面积",
+          "SQRLXDH": "申请人联系电话"
+        },
+        "layer": {
+          "id": "141cbc63-3c72-4cc3-adba-79bea8eac21e",
+          "location": "ywh='{YWH}'"
+        }
+      },
+      "FZ": {
+        "tablename": "FZ",
+        "titlefield": "qlr",
+        "infofield": "bdcqzh",
+        "valuefield": "bz",
+        "alias": {
+          "qlr": "权利人名称",
+          "cunm": "坐落",
+          "bdcdyh": "不动产单元号",
+          "gyqk": "共有情况",
+          "qllx": "权利类型",
+          "qlxz": "权利性质",
+          "yt": "用途",
+          "tdsyqmj": "土地使用权面积",
+          "scjzmj": "实测建筑面积",
+          "fzsj": "发证时间"
+        },
+        "layer": {
+          "id": "55b04a5c-1753-41c6-bcf4-36554ef37e67",
+          "location": "objectid='{objectid}'"
+        }
+      },
+      "NFDC": {
+        "tablename": "NFDC",
+        "titlefield": "qlr",
+        "infofield": "bdcqzh",
+        "valuefield": "bz",
+        "alias": {
+          "qlr": "权利人",
+          "cunm": "坐落",
+          "bdcdyh": "不动产单元号",
+          "gyqk": "共有情况",
+          "qllx": "权利类型",
+          "qlxz": "权利性质",
+          "yt": "用途",
+          "tdsyqmj": "土地使用权面积",
+          "scjzmj": "实测建筑面积",
+          "fzsj": "发证时间"
+        },
+        "layer": {
+          "id": "55b04a5c-1753-41c6-bcf4-36554ef37e67",
+          "location": "objectid='{objectid}'"
+        }
+      }
+    },
+    "containerId": "jimu-layout-manager",
+    "mapId": "map",
+    "options": {
+      "center": "120.076408,29.307371",
+      "zoom": 10,
+      "maxZoom": 20,
+      "zoomControl": false,
+      "scale": false,
+      "fullscreen": false,
+      "basemapcontrol": false,
+      "mouseposition": false,
+      "showLegends":false,
+      "showInnerToolbars":false,
+      "projection": "EPSG:4326",
+      "legendConfig":{
+        "panelW": 150, 
+        "panelH": 120, 
+        "columnNum": 1, 
+        "isShowName": true, 
+        "isShowTitle": true, 
+        "titleBackground": "rgba(255,255,255,0)",
+        "titleFontColor": "#1E1E1E", 
+        "fontStyle": {
+          "fontWeight": 400,
+          "fontSize": 14,
+          "color": "#1E1E1E"
+        },
+        "layerFontStyle": {
+          "fontWeight": 400,
+          "fontSize": 14,
+          "color": "#1E1E1E"
+        }
+      },
+      "roles":[
+        "survey-menu-identify",
+        "survey-menu-tools",
+        "survey-menu-tools-measure",
+        "survey-menu-toc",
+        "survey-menu-tools-legend",
+      ],
+      "basemaps": [
+        {
+          "id": "c17c4b75-98c5-4359-80d1-3e9154834d95",
+          "name": "天地图影像",
+          "thumbnailUrl": "./assets/img/basemap/satellite.png",
+          "layers": [{
+              "id": "e4f24e5c-38ff-4bbd-8c4f-f2585eee047b",
+              "name": "img",
+              "type": "tdt",
+              "url": "http://t3.tianditu.gov.cn/img_c/wmts?tk=73f429c4c1d4550cdbac3def1243aa9c",
+              "layerIdentifier": "TianDiTu.Satellite.Map"
+            },
+            {
+              "id": "70e19c03-06a9-496c-8c76-7b5bd78b8a56",
+              "name": "cia",
+              "type": "tdt",
+              "url": "http://t3.tianditu.gov.cn/cia_c/wmts?tk=73f429c4c1d4550cdbac3def1243aa9c",
+              "layerIdentifier": "TianDiTu.Satellite.Annotion"
+            }
+          ]
+        },
+        {
+          "id": "df6c94ad-c73f-4eda-96ff-362e23c763db",
+          "name": "天地图矢量",
+          "thumbnailUrl": "./assets/img/basemap/street.png",
+          "layers": [{
+              "id": "14ec2baf-a0df-428a-bb94-99a009dcdf4a",
+              "name": "天地图矢量",
+              "type": "tdt",
+              "url": "http://t3.tianditu.com/vec_c/wmts?tk=73f429c4c1d4550cdbac3def1243aa9c",
+              "layerIdentifier": "TianDiTu.Normal.Map"
+            },
+            {
+              "id": "3fe7a518-afdc-4b2d-a6ea-2224584665e1",
+              "name": "天地矢量像注记",
+              "type": "tdt",
+              "url": "http://t3.tianditu.com/cva_c/wmts?tk=73f429c4c1d4550cdbac3def1243aa9c",
+              "layerIdentifier": "TianDiTu.Normal.Annotion"
+            }
+          ]
+        },
+        {
+          "id": "e094f2bc-9397-4c54-9de5-a5032966d41f",
+          "name": "天地图晕渲",
+          "thumbnailUrl": "./assets/img/basemap/hillshading.png",
+          "layers": [{
+              "id": "685d4b97-6872-43d6-8da2-4ca1bd0a0f14",
+              "name": "天地图晕渲",
+              "type": "tdt",
+              "url": "http://t3.tianditu.gov.cn/ter_c/wmts?tk=73f429c4c1d4550cdbac3def1243aa9c",
+              "layerIdentifier": "TianDiTu.Normal.Map"
+            },
+            {
+              "id": "179beb86-8232-4986-8c39-22420f16f292",
+              "name": "天地地形注记",
+              "type": "tdt",
+              "url": "http://t3.tianditu.gov.cn/cta_c/wmts?tk=73f429c4c1d4550cdbac3def1243aa9c",
+              "layerIdentifier": "TianDiTu.Normal.Annotion"
+            }
+          ]
+        }
+      ],
+      "bizzmaps": [
+      ]
+    }
+  },
+  "TDTLayerSwitch": [{
+    "activeType": "vec",
+    "noteActive": true
+  }],
+  "geometryService": "http://192.168.11.76:6080/arcgis/rest/services/Utilities/Geometry/GeometryServer",
+  "coreService": "http://192.168.11.76:6080/arcgis/rest/services/SampleWorldCities/MapServer/exts/Gisq",
+  "xzqService": "http://122.224.233.66:11766/arcgis/rest/services/XZQ_SY/MapServer",
+  "spatialServiceUrl": "/farmopengis",
+  "elasticsearchAddress": "",
+  "TempFileSite": "http://192.168.2.142/TempFile/",
+  "dzzw": "java",
+  "IpPool": [{
+      "name": "IP",
+      "ip": "192.168.2.81:6080",
+      "id": "265d7ccd-2f5f-6ecb-5520-400475403f19"
+    },
+    {
+      "name": "IP1",
+      "ip": "192.168.11.76:6080",
+      "id": "3c6e7b5c-3744-78cc-89c2-f5217258d876"
+    }
+  ],
+  "ExportFileTypeTable": [{
+      "id": "shp",
+      "ext": "SHP|.zip",
+      "label": "Shp文件",
+      "stat": "enable"
+    },
+    {
+      "id": "dxf",
+      "label": "AutoCAD DXF文件(*.dxf)",
+      "ext": "DXF|.dxf",
+      "stat": "enable"
+    },
+    {
+      "id": "ZJGT",
+      "label": "浙江省国土资源厅标准格式(*.txt)",
+      "ext": "ZJGT|.txt",
+      "stat": "enable"
+    },
+    {
+      "id": "GTJZD",
+      "label": "国土资源部标准格式(*.txt)",
+      "ext": "GTJZD|.txt",
+      "stat": "enable"
+    },
+    {
+      "id": "JDJZD",
+      "label": "简单自定义界址点格式(*.txt)",
+      "ext": "JDJZD|.txt",
+      "stat": "enable"
+    },
+    {
+      "id": "ZJGTNDH",
+      "label": "浙江省国土资源厅标准格式无带号(*.txt)",
+      "ext": "ZJGTNDH|.txt",
+      "stat": "enable"
+    },
+    {
+      "id": "GTJZDNDH",
+      "label": "国土资源部标准格式无带号(*.txt)",
+      "ext": "GTJZDNDH|.txt",
+      "stat": "enable"
+    },
+    {
+      "id": "JDJZDNDH",
+      "label": "简单自定义界址点格式无带号(*.txt)",
+      "ext": "JDJZDNDH|.txt",
+      "stat": "enable"
+    },
+    {
+      "id": "ZSPOINT",
+      "label": "简单自定义点格式(*.txt)",
+      "ext": "ZSPOINT|.txt",
+      "stat": "enable"
+    },
+    {
+      "id": "ZSLINE",
+      "label": "简单自定义线格式(*.txt)",
+      "ext": "ZSLINE|.txt",
+      "stat": "enable"
+    }
+  ],
+  "ImportFileTypeTable": [{
+      "id": "dxf",
+      "ext": "DXF|.dxf",
+      "label": "AutoCAD DXF文件(*.dxf)",
+      "stat": "enable"
+    },
+    {
+      "id": "ZJGT",
+      "label": "浙江省国土资源厅标准格式(*.txt)",
+      "ext": "ZJGT|.txt",
+      "stat": "enable"
+    },
+    {
+      "id": "GTJZD",
+      "label": "国土资源部标准格式(*.txt)",
+      "ext": "GTJZD|.txt",
+      "stat": "enable"
+    },
+    {
+      "id": "shp",
+      "ext": "SHP|.shp",
+      "label": "Shp文件",
+      "stat": "enable"
+    },
+    {
+      "id": "ZSPOINT",
+      "label": "简单自定义点格式(*.txt)",
+      "ext": "ZSPOINT|.txt",
+      "stat": "enable"
+    },
+    {
+      "id": "ZSLINE",
+      "label": "简单自定义线格式(*.txt)",
+      "ext": "ZSLINE|.txt",
+      "stat": "enable"
+    },
+    {
+      "id": "JDJZD",
+      "label": "简单自定义界址点格式(*.txt)",
+      "ext": "JDJZD|.txt",
+      "stat": "enable"
+    }
+  ],
+  "ExportMapTemplate": [{
+      "id": "3",
+      "name": "A3 Landscape",
+      "layout": {
+        "width": 36.2772,
+        "height": 21.3959
+      }
+    },
+    {
+      "id": "4",
+      "name": "A3 Portrait",
+      "layout": {
+        "width": 23.9989,
+        "height": 32.7853
+      }
+    },
+    {
+      "id": "8dc86aa2-7cea-5865-a419-351ea01f538e",
+      "name": "A4 Portrait",
+      "layout": {
+        "width": 10000.0,
+        "height": 1000.0
+      }
+    },
+    {
+      "id": "6c2c4f56-07bf-fe7e-61e6-291b2b87fa9d",
+      "name": "A4 Landscape",
+      "layout": {
+        "width": 23.7883,
+        "height": 13.4511
+      }
+    }
+  ],
+  "PrintMapService": "http://192.168.11.76:6080/arcgis/rest/services/ExportWebMap/GPServer/Export%20Web%20Map",
+  "preloadWidgets": {
+    "panel": {
+      "uri": "customLayout/FoldableLayout/panels/TitlePanel/Panel",
+      "positionRelativeTo": "map"
+    },
+    "widgets": [{
+        "label": "头部控件",
+        "uri": "customDijit/HeaderContainer/Widget",
+        "positionRelativeTo": "map",
+        "position": {
+          "top": 20.0,
+          "right": 0.0
+        },
+        "id": "customDijit/HeaderController_Widget_HC3CF32A7218794753B116F8E136C6C411",
+        "moreicon": "./StyleResources/images/widgetIcons/更多.svg",
+        "name": "头部容器",
+        "controllerRegKey": "header-top-right",
+        "inPanel": false,
+        "stat": "enable"
+      },
+      {
+        "label": "图层目录",
+        "uri": "customDijit/Toc/Widget",
+        "positionRelativeTo": "map",
+        "position": {
+          "top": 20.0,
+          "left": 9.0
+        },
+        "id": "customDijit/Toc_Widget_TOC3CF32A7218794753B116F8E136C6C411",
+        "name": "图层目录",
+        "fromBottom": 12.0,
+        "inPanel": false,
+        "stat": "enable"
+      },
+      {
+        "label": "快速切换",
+        "uri": "customDijit/ShortToc/Widget",
+        "positionRelativeTo": "map",
+        "position": {
+          "bottom": 1.0,
+          "right": 1.0
+        },
+        "id": "customDijit/Toc_Widget_ShortTOC3CF32A7218794753B116F8E136C6C",
+        "name": "快速切换",
+        "fromBottom": 12.0,
+        "inPanel": false,
+        "stat": "unable"
+      },
+      {
+        "label": "行政区导航",
+        "uri": "customDijit/Navigator/Widget",
+        "positionRelativeTo": "map",
+        "position": {
+          "right": 392.0,
+          "top": 20.0
+        },
+        "id": "customDijit/Navigator_Widget_b248a938-07a4-4355-a7c9-ce07e12e01e3",
+        "name": "Navigator",
+        "stat": "enable"
+      },
+      {
+        "label": "比例尺和经纬度",
+        "uri": "customDijit/ScalerAndXY/Widget",
+        "positionRelativeTo": "map",
+        "position": {
+          "left": 9.0,
+          "bottom": 5.0
+        },
+        "id": "customDijit/ScalerAndXY_Widget_SALXY3CF32A7218794753B116F8E136C6C411",
+        "name": "ScalerAndXY",
+        "stat": "enable"
+      },
+      {
+        "label": "图例",
+        "uri": "customDijit/Legend/Widget",
+        "positionRelativeTo": "map",
+        "position": {
+          "right": 7.0,
+          "bottom": 175.0
+        },
+        "id": "customDijit/Legend_Widget_legend3CF32A72187947116F8E136C6C411",
+        "name": "Legend",
+        "stat": "enable"
+      },
+      {
+        "label": "全景图",
+        "uri": "customDijit/Panorama/Widget",
+        "positionRelativeTo": "map",
+        "id": "customDijit/Panorama_Widget_panorama3CF32A7218794711647E136C6C412",
+        "name": "Panorama",
+        "stat": "enable"
+      },
+      {
+        "label": "地块列表",
+        "uri": "customDijit/BlockList/Widget",
+        "positionRelativeTo": "map",
+        "id": "customDijit/BlockList_Widget_block444dfdfdfsdfCF32A721356C4df1",
+        "name": "BlockList",
+        "stat": "enable"
+      },
+      {
+        "label": "右键菜单",
+        "uri": "customDijit/RClickMenu/Widget",
+        "positionRelativeTo": "map",
+        "position": {
+          "top": 0.0,
+          "left": 0.0
+        },
+        "id": "customDijit/RightMenu_Widget_b248a938-07a4-9WCF-72FG9-8C9C900",
+        "name": "右键菜单",
+        "fromBottom": 12.0,
+        "inPanel": false,
+        "stat": "enable"
+      }
+    ]
+  },
+  "widgetPool": {
+    "panel": {
+      "uri": "customLayout/FoldableLayout/panels/FoldablePanel/Panel",
+      "positionRelativeTo": "layout",
+      "position": {
+        "top": 49.0,
+        "right": 5.0,
+        "bottom": 5.0
+      }
+    },
+    "floatPanel": {
+      "uri": "customLayout/FoldableLayout/panels/FloatingPanel/Panel",
+      "positionRelativeTo": "layout",
+      "position": {
+        "right": 260.0
+      }
+    },
+    "widgets": [{
+        "name": "Solution",
+        "label": "方案",
+        "uri": "customDijit/Solution/Widget",
+        "panelType": "FLOAT_PANEL",
+        "noTogglen": false,
+        "isPanelMutex": false,
+        "index": 998.0,
+        "id": "customDijit/Solution_Widget_977f7aba-0977-4497-89aa-c7a042f1202f",
+        "icon": "solution.png",
+        "iconclass": "Solution",
+        "regPosition": "header-top-right",
+        "stat": "enable"
+      },
+      {
+        "name": "Test",
+        "label": "测试组件",
+        "uri": "customDijit/Test/Widget",
+        "panelType": "FLOAT_PANEL",
+        "noTogglen": false,
+        "isPanelMutex": false,
+        "index": 998.0,
+        "id": "customDijit/Test_Widget_977f7aba-0977-4497-89aa-c7a042f1202f",
+        "icon": "solution.png",
+        "iconclass": "Solution",
+        "regPosition": "header-top-right",
+        "stat": "enable"
+      },
+      {
+        "name": "Buffer",
+        "label": "缓冲区查询",
+        "uri": "customDijit/BufferAnalyze/Widget",
+        "panelType": "FLOAT_PANEL",
+        "noTogglen": false,
+        "isPanelMutex": true,
+        "index": 991.0,
+        "id": "customDijit/BufferAnalyze_Widget_694b96a1-s23f-f5g2-ad14-gf85fv021g4",
+        "icon": "buffer.png",
+        "iconclass": "Buffer",
+        "regPosition": "header-top-right",
+        "stat": "enable"
+      },
+      {
+        "name": "编辑",
+        "label": "编辑",
+        "stat": "enable",
+        "id": "2be2d083-370f-462e-8271-1f096bdb8e2c",
+        "icon": "editgroup.png",
+        "iconclass": "EditGroup",
+        "index": 992.0,
+        "widgets": [{
+            "id": "customDijit/ClearTool_Widget_435285fde-63e3-4a99-add2-da64ad48575c",
+            "name": "ClearTool",
+            "label": "清除",
+            "uri": "customDijit/ClearTool/Widget",
+            "index": 10.0,
+            "icon": "clear.png",
+            "iconclass": "ClearTool",
+            "panelType": "NONE_PANEL",
+            "stat": "enable",
+            "isPanelMutex": true,
+            "noTogglen": true,
+            "regPosition": "header-top-right"
+          },
+          {
+            "id": "customDijit/EditTool_Widget_b27dat14-5c70-4e7d-86e2-do9d96d00ab3a",
+            "name": "EditTool",
+            "label": "编辑",
+            "uri": "customDijit/EditTool/Widget",
+            "index": 9.0,
+            "icon": "edit.png",
+            "iconclass": "EditTool",
+            "panelType": "NONE_PANEL",
+            "stat": "enable",
+            "isPanelMutex": true,
+            "noTogglen": false,
+            "regPosition": "header-top-right"
+          },
+          {
+            "id": "customDijit/Save_Widget_b27da614-5c70-4e7d-86e2-bdd96d00ab3a",
+            "name": "Save",
+            "label": "保存",
+            "uri": "customDijit/Save/Widget",
+            "index": 11.0,
+            "icon": "save.png",
+            "iconclass": "Save",
+            "panelType": "NONE_PANEL",
+            "stat": "enable",
+            "isPanelMutex": true,
+            "noTogglen": true,
+            "regPosition": "header-top-right"
+          },
+          {
+            "id": "customDijit/DeleteTool_Widget_7ca9bfde-63e3-4a99-add2-da64ad47375c",
+            "name": "DeleteTool",
+            "label": "删除",
+            "uri": "customDijit/DeleteTool/Widget",
+            "index": 12.0,
+            "icon": "delete.png",
+            "iconclass": "DeleteTool",
+            "panelType": "NONE_PANEL",
+            "stat": "enable",
+            "isPanelMutex": true,
+            "noTogglen": true,
+            "regPosition": "header-top-right"
+          },
+          {
+            "name": "PolygonTool",
+            "label": "绘制",
+            "uri": "customDijit/PolygonTool/Widget",
+            "index": 8.0,
+            "panelType": "NONE_PANEL",
+            "isPanelMutex": true,
+            "noTogglen": false,
+            "id": "customDijit/PolygonTool_Widget_5e4d69ac-9593-4791-b4f4-22a137a79073",
+            "icon": "draw.png",
+            "iconclass": "PolygonTool",
+            "regPosition": "header-top-right",
+            "stat": "enable"
+          }
+        ]
+      },
+      {
+        "name": "工具",
+        "label": "工具",
+        "stat": "enable",
+        "id": "8347d4f3-cea3-4d9e-aa40-02fb460ca442",
+        "icon": "toolgroup.png",
+        "iconclass": "ToolGroup",
+        "index": 993.0,
+        "widgets": [{
+            "id": "customDijit/Locate_Widget_b4d6d1e2-5c3b-487e-b366-466003321603",
+            "name": "Locate",
+            "label": "定位",
+            "uri": "customDijit/Locate/Widget",
+            "index": 3.0,
+            "icon": "locate.png",
+            "iconclass": "Locate",
+            "panelType": "FLOAT_PANEL",
+            "stat": "enable",
+            "isPanelMutex": false,
+            "noTogglen": false,
+            "regPosition": "header-top-right"
+          },
+          {
+            "id": "customDijit/Bookmark_Widget_c170ed80-e0d2-4907-a6a2-da69712330d1",
+            "name": "Bookmark",
+            "label": "书签",
+            "uri": "customDijit/Bookmark/Widget",
+            "index": 2.0,
+            "icon": "bookmark.png",
+            "iconclass": "Bookmark",
+            "panelType": "FLOAT_PANEL",
+            "stat": "enable",
+            "isPanelMutex": false,
+            "noTogglen": false,
+            "regPosition": "header-top-right"
+          },
+          {
+            "id": "customDijit/FileExport_Widget_b4d6d1e2-5c3b-487e-b366-466003321603",
+            "name": "FileExport",
+            "label": "导出",
+            "uri": "customDijit/FileExport/Widget",
+            "index": 6.0,
+            "icon": "export.png",
+            "iconclass": "FileExport",
+            "panelType": "FLOAT_PANEL",
+            "stat": "enable",
+            "isPanelMutex": false,
+            "noTogglen": false,
+            "regPosition": "header-top-right",
+            "exportProject": "CGCS2000"
+          },
+          {
+            "id": "customDijit/Swipe_Widget_SWIS3CF32A72DFDF94753B116F8E136C6CD41",
+            "name": "Swipe",
+            "label": "卷帘",
+            "uri": "customDijit/Swipe/Widget",
+            "index": 5.0,
+            "icon": "swipe.png",
+            "iconclass": "Swipe",
+            "panelType": "FLOAT_PANEL",
+            "stat": "enable",
+            "isPanelMutex": false,
+            "noTogglen": false,
+            "regPosition": "header-top-right"
+          },
+          {
+            "id": "customDijit/Measurement_Widget_MEAS3CF32A7218794753B116F8E136C6C411",
+            "name": "Measurement",
+            "label": "测量",
+            "uri": "customDijit/Measurement/Widget",
+            "index": 4.0,
+            "icon": "measure.png",
+            "iconclass": "Measurement",
+            "panelType": "FLOAT_PANEL",
+            "stat": "enable",
+            "isPanelMutex": true,
+            "noTogglen": false,
+            "regPosition": "header-top-right"
+          },
+          {
+            "id": "customDijit/MapLabel_Widget_f094f2ec-24cd-49a6-a9a7-920485823f6c",
+            "name": "MapLabel",
+            "label": "标注",
+            "uri": "customDijit/MapLabel/Widget",
+            "index": 1.0,
+            "icon": "label.png",
+            "iconclass": "MapLabel",
+            "panelType": "FLOAT_PANEL",
+            "stat": "enable",
+            "isPanelMutex": true,
+            "noTogglen": false,
+            "regPosition": "header-top-right"
+          },
+          {
+            "id": "customDijit/FileImport_Widget_b4d6d1e2-5c3b-487e-b366-sdfsasdasd",
+            "name": "FileImport",
+            "label": "导入",
+            "uri": "customDijit/FileImport/Widget",
+            "index": 7.0,
+            "icon": "import.png",
+            "iconclass": "FileImport",
+            "panelType": "FLOAT_PANEL",
+            "stat": "enable",
+            "isPanelMutex": false,
+            "noTogglen": false,
+            "regPosition": "header-top-right",
+            "exportProject": "xian80"
+          }
+        ]
+      },
+      {
+        "name": "ExportMap",
+        "label": "制图",
+        "uri": "customDijit/ExportMap/Widget",
+        "index": 995.0,
+        "id": "customDijit/ExportMap_Widget_97fb1821-1faa-4d8d-9700-f327ab7ce0d6",
+        "icon": "print.png",
+        "iconclass": "ExportMap",
+        "panelType": "FLOAT_PANEL",
+        "noTogglen": false,
+        "isPanelMutex": false,
+        "regPosition": "header-top-right",
+        "stat": "enable",
+        "showMapLabel": "true"
+      },
+      {
+        "name": "Identify",
+        "label": "查询",
+        "uri": "customDijit/Identify/Widget",
+        "index": 994.0,
+        "noTogglen": false,
+        "panelType": "NONE_PANEL",
+        "isPanelMutex": true,
+        "id": "customDijit/Identify_Widget_36fcf5eb-09f2-4669-9caf-283a6b2873d0",
+        "icon": "identify.png",
+        "iconclass": "Identify",
+        "regPosition": "header-top-right",
+        "stat": "enable"
+      },
+      {
+        "name": "Analyze",
+        "label": "分析",
+        "uri": "customDijit/Analyze/Widget",
+        "panelType": "FLOAT_PANEL",
+        "noTogglen": false,
+        "isPanelMutex": false,
+        "index": 996.0,
+        "id": "customDijit/Analyze_Widget_694b96a1-f305-4fad-8f1b-9eb35f991ada",
+        "icon": "analy.png",
+        "iconclass": "Analyze",
+        "regPosition": "header-top-right",
+        "stat": "enable",
+        "analyShow": "1",
+        "analysisVersion": 1.0
+      },
+      {
+        "id": "customDijit/SelectTool_Widget_9bf3ec53-9a0f-42b0-a203-ba9afa1b7246",
+        "name": "SelectTool",
+        "label": "选择",
+        "uri": "customDijit/SelectTool/Widget",
+        "index": 997.0,
+        "icon": "select.png",
+        "iconclass": "Select",
+        "panelType": "NONE_PANEL",
+        "stat": "enable",
+        "isPanelMutex": true,
+        "noTogglen": false,
+        "regPosition": "header-top-right",
+        "selectShow": "false",
+        "selectInfoUrl": "http://192.168.7.77:48079/WebReport8.0/ReportServer?reportlet\u003d/JCFX/%E6%88%BF%E5%9C%B0%E4%BA%A7/%E6%88%BF%E5%9C%B0%E4%BA%A7%E7%94%A8%E5%9C%B0%E4%BB%B7%E6%A0%BC%E5%8F%98%E5%8A%A8%E6%83%85%E5%86%B5.cpt\u0026op\u003dwrite\u0026userId\u003d1\u0026__showtoolbar__\u003dfalse\u00260.056780236427203146"
+      }
+    ]
+  },
+  "toc": [{
+      "id": "P6F2D955F5A84BA882CC7B645974376C",
+      "label": "图层目录",
+      "showIndex": 1.0,
+      "checked": "mixed",
+      "initChecked": true,
+      "layerTag": "",
+      "type": "",
+      "geometryType": "choice",
+      "topologyCheck": 0.0,
+      "url": "",
+      "visibleLayers": [],
+      "isSwitch": false,
+      "isShortcut": false,
+      "layerTable": "",
+      "group": "1",
+      "thumbUrl": "",
+      "mobile": false,
+      "showInfoWindow": false,
+      "isFit": false,
+      "security": false,
+      "rightMenu": false,
+      "opacity": "1",
+      "isCoordSysTrans": false,
+      "mapIndex": 39.0
+    },
+    {
+      "id": "cbopd126-609b-loba-3ecc-ekmju6cc4",
+      "showIndex": 26.0,
+      "parent": "c3f209f2-4790-00f4-9066-18ffe3d6b06d",
+      "label": "高德影像地图",
+      "layerTag": "gaode_img",
+      "type": "gaode",
+      "url": "http://wprd0{1-4}.is.autonavi.com/appmaptile?x={x}&y={y}&z={z}&lang=zh_cn&size=1&scl=2&style=6",
+      "visibleLayers": [],
+      "mapIndex": 1.0,
+      "initChecked": true,
+      "isShortcut": false,
+      "isSwitch": false,
+      "group": "1",
+      "thumbUrl": "static/img/dz.jpg",
+      "mobile": false,
+      "showInfoWindow": false,
+      "isFit": false,
+      "rightMenu": false,
+      "opacity": "1",
+      "security": false,
+      "identifyField": [],
+      "isCoordSysTrans": false
+    },
+    {
+      "id": "cbopd126-609b-loba-3ecc-ekmju6ddcc4",
+      "showIndex": 26.0,
+      "parent": "c3f209f2-4790-00f4-9066-18ffe3d6b06d",
+      "label": "wmsceshi",
+      "layerTag": "gaode_imgwms",
+      "type": "gaode",
+      "url": "http://wprd0{1-4}.is.autonavi.com/appmaptile?x={x}&y={y}&z={z}&lang=zh_cn&size=1&scl=2&style=6",
+      "visibleLayers": [],
+      "mapIndex": 1.0,
+      "initChecked": true,
+      "isShortcut": false,
+      "isSwitch": false,
+      "group": "1",
+      "thumbUrl": "static/img/dz.jpg",
+      "mobile": false,
+      "showInfoWindow": false,
+      "isFit": false,
+      "rightMenu": false,
+      "opacity": "1",
+      "security": false,
+      "identifyField": [],
+      "isCoordSysTrans": false
+    },
+    {
+      "id": "ea310795-e51b-071e-6ed5-a7ser43f09e",
+      "showIndex": 3.0,
+      "parent": "c9ju7gf2-8990-00f4-9090-1890k5g2b06d",
+      "label": "深色主题电子地图",
+      "layerTag": "深色主题电子地图",
+      "type": "tiled",
+      "url": "http://cache1.arcgisonline.cn/arcgis/rest/services/ChinaOnlineStreetPurplishBlue/MapServer",
+      "visibleLayers": [],
+      "mapIndex": 1.0,
+      "initChecked": false,
+      "isShortcut": false,
+      "isSwitch": false,
+      "group": "1",
+      "thumbUrl": "",
+      "mobile": false,
+      "showInfoWindow": false,
+      "isFit": false,
+      "rightMenu": false,
+      "security": false,
+      "identifyField": [],
+      "opacity": "1",
+      "isCoordSysTrans": false
+    },
+    {
+      "id": "c3f209f2-4790-00f4-9066-18ffe3d6b06d",
+      "label": "天地图",
+      "parent": "P6F2D955F5A84BA882CC7B645974376C",
+      "showIndex": 1.0,
+      "initChecked": false
+    },
+    {
+      "id": "8087da1c-fcf9-ae47-b93c-6034fe22b2d2",
+      "label": "衢州",
+      "parent": "P6F2D955F5A84BA882CC7B645974376C",
+      "showIndex": 2.0,
+      "initChecked": false
+    },
+    {
+      "id": "c3f209f2-4790-00f4-9066-18ffe3Arcgis",
+      "label": "ArcGIS",
+      "parent": "P6F2D955F5A84BA882CC7B645974376C",
+      "showIndex": 4.0,
+      "initChecked": false
+    },
+    {
+      "id": "c3f209f2-4790-00f4-9066-18fGeoServer",
+      "label": "GeoServer",
+      "parent": "P6F2D955F5A84BA882CC7B645974376C",
+      "showIndex": 3.0,
+      "initChecked": false
+    },
+    {
+      "id": "809j5gf2-4790-00f4-9066-18lk83d6b06d",
+      "label": "WMS",
+      "parent": "c3f209f2-4790-00f4-9066-18ffe3Arcgis",
+      "showIndex": 48.0,
+      "initChecked": false
+    },
+    {
+      "id": "509j5g43-4790-0004-9066-18j7u590s06d",
+      "label": "wfs",
+      "parent": "c3f209f2-4790-00f4-9066-18ffe3Arcgis",
+      "showIndex": 48.0,
+      "initChecked": false
+    },
+    {
+      "id": "409j5g43-4790-0004-9066-18j7ujfyu56d",
+      "label": "feature",
+      "parent": "c3f209f2-4790-00f4-9066-18ffe3Arcgis",
+      "showIndex": 48.0,
+      "initChecked": false
+    },
+    {
+      "id": "709j5gf2-4790-00f4-9066-18lk83dlk89d",
+      "label": "vectortiled",
+      "parent": "c3f209f2-4790-00f4-9066-18ffe3Arcgis",
+      "showIndex": 48.0,
+      "initChecked": false
+    },
+    {
+      "id": "909j5w2-4798-00f4-9566-2lk83d0906d",
+      "label": "dynamic",
+      "parent": "c3f209f2-4790-00f4-9066-18ffe3Arcgis",
+      "showIndex": 48.0,
+      "initChecked": false
+    },
+    {
+      "id": "c9ju7gf2-8990-00f4-9090-1890k5g2b06d",
+      "label": "tiled(REST)",
+      "parent": "c3f209f2-4790-00f4-9066-18ffe3Arcgis",
+      "showIndex": 48.0,
+      "initChecked": false
+    },
+    {
+      "id": "20ju7gf2-8990-00f4-9090-189462g2b06d",
+      "label": "WMTS",
+      "parent": "c3f209f2-4790-00f4-9066-18ffe3Arcgis",
+      "showIndex": 48.0,
+      "initChecked": false
+    },
+    {
+      "id": "c39j5dd2-4090-00f4-9096-18lklm6sd06d",
+      "label": "WMS",
+      "parent": "c3f209f2-4790-00f4-9066-18fGeoServer",
+      "showIndex": 48.0,
+      "initChecked": false
+    },
+    {
+      "id": "001j5dd2-4090-00f4-9096-18lkm48sd06d",
+      "label": "矢量切片",
+      "parent": "c3f209f2-4790-00f4-9066-18fGeoServer",
+      "showIndex": 48.0,
+      "initChecked": false
+    },
+    {
+      "id": "002j5ew2-4090-00f4-9096-1kl9048sd06d",
+      "label": "TMS",
+      "parent": "c3f209f2-4790-00f4-9066-18fGeoServer",
+      "showIndex": 48.0,
+      "initChecked": false
+    },
+    {
+      "id": "003j5ew2-4090-00f4-9096-1kl9048ml95d",
+      "label": "WMTS",
+      "parent": "c3f209f2-4790-00f4-9066-18fGeoServer",
+      "showIndex": 48.0,
+      "initChecked": false
+    },
+    {
+      "id": "00467ew2-4090-00f4-9096-1kl90mki895d",
+      "label": "wfs",
+      "parent": "c3f209f2-4790-00f4-9066-18fGeoServer",
+      "showIndex": 48.0,
+      "initChecked": false
+    },
+    {
+      "id": "2560c678-3864-dedf-ad95-43d04fdca3f6",
+      "showIndex": 53.0,
+      "parent": "809j5gf2-4790-00f4-9066-18lk83d6b06d",
+      "label": "全球国家政区面和中国省级政区面",
+      "layerTag": "sjzqm",
+      "type": "arcgis-wms",
+      "url": "http://gisserver.tianditu.com/TDTService/wfs",
+      "visibleLayers": [
+        "china_province_region",
+        "global_country_region"
+      ],
+      "mapIndex": 10.0,
+      "initChecked": false,
+      "isShortcut": false,
+      "isSwitch": false,
+      "group": "1",
+      "thumbUrl": "UploadImgs/2560c678-3864-dedf-ad95-43d04fdca3f6_123.png",
+      "mobile": false,
+      "showInfoWindow": false,
+      "isFit": false,
+      "rightMenu": false,
+      "opacity": "1",
+      "security": false,
+      "identifyField": [{
+        "lyr": "",
+        "search": "",
+        "display": ""
+      }]
+    },
+    {
+      "id": "1ed9c5a4-243b-1cfe-6146-086584e474b3",
+      "showIndex": 7.0,
+      "parent": "509j5g43-4790-0004-9066-18j7u590s06d",
+      "label": "wfs",
+      "layerTag": "WFS",
+      "type": "arcgis-wfs",
+      "url": "http://192.168.11.76:6080/arcgis/services/DUO2364/MapServer/WFSServer",
+      "visibleLayers": [
+        "DUO2364:mian"
+      ],
+      "mapIndex": 24.0,
+      "initChecked": false,
+      "isShortcut": false,
+      "isSwitch": false,
+      "group": "2",
+      "thumbUrl": "UploadImgs/1ed9c5a4-243b-1cfe-6146-086584e474b3_123.png",
+      "mobile": false,
+      "showInfoWindow": false,
+      "isFit": false,
+      "rightMenu": false,
+      "opacity": "1",
+      "security": false,
+      "identifyField": [{
+        "lyr": "http://192.168.11.76:6080/arcgis/services/DUO2364/MapServer/WFSServer/DUO2364:mian",
+        "search": "",
+        "display": ""
+      }],
+      "isCoordSysTrans": false
+    },
+    {
+      "id": "cbopd126-609b-loba-3ecc-ekmju6cc4",
+      "showIndex": 26.0,
+      "parent": "c3f209f2-4790-00f4-9066-18ffe3d6b06d",
+      "label": "高德影像地图",
+      "layerTag": "gaode_img",
+      "type": "gaode",
+      "url": "http://wprd0{1-4}.is.autonavi.com/appmaptile?x={x}&y={y}&z={z}&lang=zh_cn&size=1&scl=2&style=6",
+      "visibleLayers": [],
+      "mapIndex": 1.0,
+      "initChecked": false,
+      "isShortcut": false,
+      "isSwitch": false,
+      "group": "1",
+      "thumbUrl": "static/img/dz.jpg",
+      "mobile": false,
+      "showInfoWindow": false,
+      "isFit": false,
+      "rightMenu": false,
+      "opacity": "1",
+      "security": false,
+      "identifyField": [],
+      "isCoordSysTrans": false
+    },
+    {
+      "id": "cbopd126-609b-loba-3ecc-ea3djk88ccc4",
+      "showIndex": 26.0,
+      "parent": "c3f209f2-4790-00f4-9066-18ffe3d6b06d",
+      "label": "全球矢量地图服务",
+      "layerTag": "TDT_QG",
+      "type": "tdt",
+      "url": "http://t0.tianditu.gov.cn/vec_c/wmts?tk=17d1619c13e4508bc1945bd59de4edf8",
+      "visibleLayers": [
+        "vec"
+      ],
+      "mapIndex": 1.0,
+      "initChecked": false,
+      "isShortcut": false,
+      "isSwitch": false,
+      "group": "1",
+      "thumbUrl": "UploadImgs/cbd0d126-609b-b9ba-3ecc-ea3a3128ccc4_123.png",
+      "mobile": false,
+      "showInfoWindow": false,
+      "isFit": false,
+      "rightMenu": false,
+      "opacity": "1",
+      "security": false,
+      "identifyField": [{
+        "lyr": "",
+        "search": "",
+        "display": ""
+      }],
+      "isCoordSysTrans": false
+    },
+    {
+      "id": "cbolk126-609b-b9da-3ecc-ekij678d5cc4",
+      "showIndex": 26.0,
+      "parent": "c3f209f2-4790-00f4-9066-18ffe3d6b06d",
+      "label": "全球矢量注记服务",
+      "layerTag": "TDT_QG",
+      "type": "tdt",
+      "url": "http://t0.tianditu.gov.cn/cva_c/wmts?tk=17d1619c13e4508bc1945bd59de4edf8",
+      "visibleLayers": [
+        "cva"
+      ],
+      "mapIndex": 2.0,
+      "initChecked": false,
+      "isShortcut": false,
+      "isSwitch": false,
+      "group": "1",
+      "thumbUrl": "UploadImgs/cbd0d126-609b-b9ba-3ecc-ea3a3128ccc4_123.png",
+      "mobile": false,
+      "showInfoWindow": false,
+      "isFit": false,
+      "rightMenu": false,
+      "opacity": "1",
+      "security": false,
+      "identifyField": [{
+        "lyr": "",
+        "search": "",
+        "display": ""
+      }],
+      "isCoordSysTrans": false
+    },
+    {
+      "id": "cbd0dd26-609b-b9ba-3ecc-ealom98dccc4",
+      "showIndex": 26.0,
+      "parent": "c3f209f2-4790-00f4-9066-18ffe3d6b06d",
+      "label": "全球影像地图服务",
+      "layerTag": "TDT_QG",
+      "type": "tdt",
+      "url": "http://t0.tianditu.gov.cn/img_c/wmts?tk=17d1619c13e4508bc1945bd59de4edf8",
+      "visibleLayers": [
+        "img"
+      ],
+      "mapIndex": 1.0,
+      "initChecked": false,
+      "isShortcut": false,
+      "isSwitch": false,
+      "group": "1",
+      "thumbUrl": "UploadImgs/cbd0d126-609b-b9ba-3ecc-ea3a3128ccc4_123.png",
+      "mobile": false,
+      "showInfoWindow": false,
+      "isFit": false,
+      "rightMenu": false,
+      "opacity": "1",
+      "security": false,
+      "identifyField": [{
+        "lyr": "",
+        "search": "",
+        "display": ""
+      }],
+      "isCoordSysTrans": false
+    },
+    {
+      "id": "cbd0d126-6ddb-b9ba-ddcc-ea3a3128ccc4",
+      "showIndex": 26.0,
+      "parent": "c3f209f2-4790-00f4-9066-18ffe3d6b06d",
+      "label": "全球影像注记服务",
+      "layerTag": "TDT_QG",
+      "type": "tdt",
+      "url": "http://t0.tianditu.gov.cn/cia_c/wmts?tk=17d1619c13e4508bc1945bd59de4edf8",
+      "visibleLayers": [
+        "cia"
+      ],
+      "mapIndex": 2.0,
+      "initChecked": false,
+      "isShortcut": false,
+      "isSwitch": false,
+      "group": "1",
+      "thumbUrl": "UploadImgs/cbd0d126-609b-b9ba-3ecc-ea3a3128ccc4_123.png",
+      "mobile": false,
+      "showInfoWindow": false,
+      "isFit": false,
+      "rightMenu": false,
+      "opacity": "1",
+      "security": false,
+      "identifyField": [{
+        "lyr": "",
+        "search": "",
+        "display": ""
+      }],
+      "isCoordSysTrans": false
+    },
+    {
+      "id": "cbddd126-609b-b9ba-3ecc-ea3a312ddcc4",
+      "showIndex": 26.0,
+      "parent": "c3f209f2-4790-00f4-9066-18ffe3d6b06d",
+      "label": "全球地形晕渲地图服务",
+      "layerTag": "TDT_QG",
+      "type": "tdt",
+      "url": "http://t0.tianditu.gov.cn/ter_c/wmts?tk=17d1619c13e4508bc1945bd59de4edf8",
+      "visibleLayers": [
+        "ter"
+      ],
+      "mapIndex": 1.0,
+      "initChecked": false,
+      "isShortcut": false,
+      "isSwitch": false,
+      "group": "1",
+      "thumbUrl": "UploadImgs/cbd0d126-609b-b9ba-3ecc-ea3a3128ccc4_123.png",
+      "mobile": false,
+      "showInfoWindow": false,
+      "isFit": false,
+      "rightMenu": false,
+      "opacity": "1",
+      "security": false,
+      "identifyField": [{
+        "lyr": "",
+        "search": "",
+        "display": ""
+      }],
+      "isCoordSysTrans": false
+    },
+    {
+      "id": "cbd0d126-60sb-b9ba-3ecc-ea3a31ddaccc4",
+      "showIndex": 26.0,
+      "parent": "c3f209f2-4790-00f4-9066-18ffe3d6b06d",
+      "label": "全球地形晕渲注记服务",
+      "layerTag": "TDT_QG",
+      "type": "tdt",
+      "url": "http://t0.tianditu.gov.cn/cta_c/wmts?tk=17d1619c13e4508bc1945bd59de4edf8",
+      "visibleLayers": [
+        "cta"
+      ],
+      "mapIndex": 2.0,
+      "initChecked": false,
+      "isShortcut": false,
+      "isSwitch": false,
+      "group": "1",
+      "thumbUrl": "UploadImgs/cbd0d126-609b-b9ba-3ecc-ea3a3128ccc4_123.png",
+      "mobile": false,
+      "showInfoWindow": false,
+      "isFit": false,
+      "rightMenu": false,
+      "opacity": "1",
+      "security": false,
+      "identifyField": [{
+        "lyr": "",
+        "search": "",
+        "display": ""
+      }],
+      "isCoordSysTrans": false
+    },
+    {
+      "id": "4jkn4795-e51b-071e-6ed5-a7ln4olk79e",
+      "showIndex": 3.0,
+      "parent": "c39j5dd2-4090-00f4-9096-18lklm6sd06d",
+      "label": "WMS-GeoServer",
+      "layerTag": "WMS-GeoServer",
+      "type": "geoserver-wms",
+      "url": "http://192.168.11.77:8080//geoserver/postgis/wms",
+      "visibleLayers": [
+        "postgis:bou2_4p"
+      ],
+      "mapIndex": 10.0,
+      "initChecked": false,
+      "isShortcut": false,
+      "isSwitch": false,
+      "group": "1",
+      "thumbUrl": "",
+      "mobile": false,
+      "showInfoWindow": false,
+      "isFit": false,
+      "rightMenu": false,
+      "security": false,
+      "identifyField": [{
+        "lyr": "http://192.168.11.77:8080/geoserver",
+        "search": "",
+        "display": ""
+      }],
+      "opacity": "1",
+      "isCoordSysTrans": false
+    },
+    {
+      "id": "wg310795-e51b-071e-6ed5-a7lnk9k765e",
+      "showIndex": 3.0,
+      "parent": "8087da1c-fcf9-ae47-b93c-6034fe22b2d2",
+      "label": "衢州市城市总体规划用地规划",
+      "layerTag": "csztgh3308",
+      "type": "geoserver-wms",
+      "url": "http://192.168.11.77:8080//geoserver/postgis/wms",
+      "visibleLayers": [
+        "postgis:csztgh3308"
+      ],
+      "mapIndex": 5.0,
+      "initChecked": false,
+      "isShortcut": false,
+      "isSwitch": false,
+      "group": "2",
+      "thumbUrl": "",
+      "mobile": false,
+      "showInfoWindow": false,
+      "isFit": false,
+      "rightMenu": false,
+      "security": false,
+      "identifyField": [{
+        "lyr": "http://192.168.11.77:8080/geoserver",
+        "search": "",
+        "display": ""
+      }],
+      "opacity": "1",
+      "isCoordSysTrans": false,
+      "layerTable": "",
+      "saveField": "OBJECTID",
+      "topologyCheck": 0,
+      "geometryType": "polygon"
+    },
+    {
+      "id": "wg310795-e51b-071e-6ed5-a7lnklo985e",
+      "showIndex": 1.0,
+      "parent": "8087da1c-fcf9-ae47-b93c-6034fe22b2d2",
+      "label": "瓯海",
+      "layerTag": "ouhaitownregion",
+      "type": "geoserver-wfs",
+      "url": "http://192.168.11.77:8080//geoserver/postgis/wfs",
+      "visibleLayers": [
+        "postgis:ouhaitownregion"
+      ],
+      "mapIndex": 5.0,
+      "initChecked": false,
+      "isShortcut": false,
+      "isSwitch": false,
+      "group": "2",
+      "thumbUrl": "",
+      "mobile": false,
+      "showInfoWindow": false,
+      "isFit": false,
+      "rightMenu": false,
+      "security": false,
+      "identifyField": [{
+        "lyr": "http://192.168.11.77:8080/geoserver",
+        "search": "",
+        "display": ""
+      }],
+      "opacity": "1",
+      "isCoordSysTrans": false,
+      "layerTable": "ouhaitownregion",
+      "saveField": "OBJECTID",
+      "topologyCheck": 0,
+      "geometryType": "polygon"
+    },
+    {
+      "id": "wg310795-e04b-071e-1234-a7lnklo985e",
+      "showIndex": 1.0,
+      "parent": "8087da1c-fcf9-ae47-b93c-6034fe22b2d2",
+      "label": "衢州行政区划市县",
+      "layerTag": "qzxzq",
+      "type": "geoserver-wfs",
+      "url": "http://192.168.11.77:8080//geoserver/postgis/wfs",
+      "visibleLayers": [
+        "postgis:qzxzq"
+      ],
+      "mapIndex": 105.0,
+      "initChecked": false,
+      "isShortcut": false,
+      "isSwitch": false,
+      "group": "2",
+      "thumbUrl": "",
+      "mobile": false,
+      "showInfoWindow": false,
+      "isFit": false,
+      "rightMenu": false,
+      "security": false,
+      "identifyField": [{
+        "lyr": "http://192.168.11.77:8080/geoserver",
+        "search": "",
+        "display": ""
+      }],
+      "opacity": "1",
+      "isCoordSysTrans": false,
+      "layerTable": "qzxzq",
+      "saveField": "OBJECTID",
+      "topologyCheck": 0,
+      "geometryType": "polygon"
+    },
+    {
+      "id": "wg310795-e04b-abcd-5678-a7lnklo985e",
+      "showIndex": 1.0,
+      "parent": "8087da1c-fcf9-ae47-b93c-6034fe22b2d2",
+      "label": "浙江行政区划",
+      "layerTag": "xzq_city",
+      "type": "geoserver-wfs",
+      "url": "http://192.168.11.48:8080//geoserver/pg/wfs",
+      "visibleLayers": [
+        "pg:xzq_city"
+      ],
+      "mapIndex": 106.0,
+      "initChecked": false,
+      "isShortcut": false,
+      "isSwitch": false,
+      "group": "2",
+      "thumbUrl": "",
+      "mobile": false,
+      "showInfoWindow": false,
+      "isFit": false,
+      "rightMenu": false,
+      "security": false,
+      "identifyField": [{
+        "lyr": "http://192.168.11.48:8080/geoserver",
+        "search": "",
+        "display": ""
+      }],
+      "opacity": "1",
+      "isCoordSysTrans": false,
+      "layerTable": "xzq_city",
+      "saveField": "OBJECTID",
+      "topologyCheck": 0,
+      "geometryType": "polygon"
+    },
+    {
+      "id": "wg310795-e51b-yang-6ed5-a7lnklo985e",
+      "showIndex": 1.0,
+      "parent": "8087da1c-fcf9-ae47-b93c-6034fe22b2d2",
+      "label": "衢州行政区",
+      "layerTag": "xzqzj3308_2016",
+      "type": "geoserver-wms",
+      "url": "http://192.168.11.77:8080//geoserver/wms",
+      "visibleLayers": [
+        "postgis:xzqzj3308_2016"
+      ],
+      "mapIndex": 5.0,
+      "initChecked": false,
+      "isShortcut": false,
+      "isSwitch": false,
+      "group": "2",
+      "thumbUrl": "",
+      "mobile": false,
+      "showInfoWindow": false,
+      "isFit": false,
+      "rightMenu": false,
+      "security": false,
+      "identifyField": [{
+        "lyr": "http://192.168.11.77:8080/geoserver",
+        "search": "",
+        "display": ""
+      }],
+      "opacity": "1",
+      "isCoordSysTrans": false,
+      "layerTable": "",
+      "saveField": "OBJECTID",
+      "topologyCheck": 0,
+      "geometryType": "polygon"
+    },
+    {
+      "id": "4jkn4795-e51b-071e-6ed5-a7ln4olk79e",
+      "showIndex": 3.0,
+      "parent": "8087da1c-fcf9-ae47-b93c-6034fe22b2d2",
+      "label": "衢州市城市开发边界",
+      "layerTag": "cskfbj3308",
+      "type": "geoserver-wms",
+      "url": "http://192.168.11.77:8080//geoserver/postgis/wms",
+      "visibleLayers": [
+        "postgis:cskfbj3308"
+      ],
+      "mapIndex": 10.0,
+      "initChecked": false,
+      "isShortcut": false,
+      "isSwitch": false,
+      "group": "2",
+      "thumbUrl": "",
+      "mobile": false,
+      "showInfoWindow": false,
+      "geometryType": "polygon",
+      "isFit": false,
+      "rightMenu": false,
+      "security": false,
+      "identifyField": [{
+        "lyr": "http://192.168.11.77:8080/geoserver",
+        "search": "",
+        "display": ""
+      }],
+      "opacity": "1",
+      "isCoordSysTrans": false
+    },
+    {
+      "id": "88c241ca-1417-c573-1171-a930460a7ed2",
+      "showIndex": 3.0,
+      "parent": "8087da1c-fcf9-ae47-b93c-6034fe22b2d2",
+      "label": "衢州市工程建设项目",
+      "layerTag": "gcjsxm",
+      "type": "geoserver-wfs",
+      "geometryType": "Polygon",
+      "url": "http://192.168.11.77:8080//geoserver/postgis/wfs",
+      "visibleLayers": [
+        "gcjsxm"
+      ],
+      "mapIndex": 10.0,
+      "initChecked": false,
+      "isShortcut": false,
+      "isSwitch": false,
+      "group": "2",
+      "thumbUrl": "",
+      "mobile": false,
+      "showInfoWindow": false,
+      "isFit": false,
+      "rightMenu": false,
+      "security": false,
+      "layerTable": "gcjsxm",
+      "identifyField": [{
+        "lyr": "http://192.168.11.77:8080/geoserver",
+        "search": "",
+        "display": ""
+      }],
+      "opacity": "1",
+      "isCoordSysTrans": false
+    },
+    {
+      "id": "17ecd9c4-68a4-08f9-4332-f8c3b6299cfb",
+      "showIndex": 3.0,
+      "parent": "8087da1c-fcf9-ae47-b93c-6034fe22b2d2",
+      "label": "衢州市公益林",
+      "layerTag": "gyl3308",
+      "type": "geoserver-wms",
+      "url": "http://192.168.11.77:8080//geoserver/postgis/wms",
+      "visibleLayers": [
+        "gyl3308"
+      ],
+      "mapIndex": 10.0,
+      "initChecked": false,
+      "isShortcut": false,
+      "isSwitch": false,
+      "group": "2",
+      "thumbUrl": "",
+      "mobile": false,
+      "showInfoWindow": false,
+      "isFit": false,
+      "rightMenu": false,
+      "security": false,
+      "identifyField": [{
+        "lyr": "http://192.168.11.77:8080/geoserver",
+        "search": "",
+        "display": ""
+      }],
+      "opacity": "1",
+      "isCoordSysTrans": false
+    },
+    {
+      "id": "d2bf8cb1-c850-a116-dd40-bf4b9762552f",
+      "showIndex": 3.0,
+      "parent": "8087da1c-fcf9-ae47-b93c-6034fe22b2d2",
+      "label": "衢州市粮食生产功能区",
+      "layerTag": "lsscgnq3308",
+      "type": "geoserver-wms",
+      "url": "http://192.168.11.77:8080//geoserver/postgis/wms",
+      "visibleLayers": [
+        "lsscgnq3308"
+      ],
+      "mapIndex": 10.0,
+      "initChecked": false,
+      "isShortcut": false,
+      "isSwitch": false,
+      "group": "2",
+      "thumbUrl": "",
+      "mobile": false,
+      "showInfoWindow": false,
+      "isFit": false,
+      "rightMenu": false,
+      "security": false,
+      "identifyField": [{
+        "lyr": "http://192.168.11.77:8080/geoserver",
+        "search": "",
+        "display": ""
+      }],
+      "opacity": "1",
+      "isCoordSysTrans": false
+    },
+    {
+      "id": "44a418b6-b550-8a65-c030-85fefb9260c6",
+      "showIndex": 3.0,
+      "parent": "8087da1c-fcf9-ae47-b93c-6034fe22b2d2",
+      "label": "衢州市农业空间",
+      "layerTag": "nykj3308",
+      "type": "geoserver-wms",
+      "url": "http://192.168.11.77:8080//geoserver/postgis/wms",
+      "visibleLayers": [
+        "nykj3308"
+      ],
+      "mapIndex": 10.0,
+      "initChecked": false,
+      "isShortcut": false,
+      "isSwitch": false,
+      "group": "2",
+      "thumbUrl": "",
+      "mobile": false,
+      "showInfoWindow": false,
+      "isFit": false,
+      "rightMenu": false,
+      "security": false,
+      "identifyField": [{
+        "lyr": "http://192.168.11.77:8080/geoserver",
+        "search": "",
+        "display": ""
+      }],
+      "opacity": "1",
+      "isCoordSysTrans": false
+    },
+    {
+      "id": "44a418b6-b550-8a65-c030-85fef298h0c6",
+      "showIndex": 3.0,
+      "parent": "8087da1c-fcf9-ae47-b93c-6034fe22b2d2",
+      "label": "水系蓝线",
+      "layerTag": "lanx",
+      "type": "geoserver-wms",
+      "url": "http://192.168.11.77:8080//geoserver/postgis/wms",
+      "visibleLayers": [
+        "lanx"
+      ],
+      "mapIndex": 10.0,
+      "initChecked": false,
+      "isShortcut": false,
+      "isSwitch": false,
+      "group": "2",
+      "thumbUrl": "",
+      "mobile": false,
+      "showInfoWindow": false,
+      "isFit": false,
+      "rightMenu": false,
+      "security": false,
+      "identifyField": [{
+        "lyr": "http://192.168.11.77:8080/geoserver",
+        "search": "",
+        "display": ""
+      }],
+      "opacity": "1",
+      "isCoordSysTrans": false
+    },
+    {
+      "id": "ea310795-e51b-071e-6ed5-a7ln4d0f09e",
+      "showIndex": 3.0,
+      "parent": "003j5ew2-4090-00f4-9096-1kl9048ml95d",
+      "label": "WMTS-GeoServer",
+      "layerTag": "WMTS-GeoServer",
+      "type": "geoserver-wmts",
+      "url": "http://192.168.11.77:8080//geoserver/gwc/service/wmts",
+      "visibleLayers": [
+        "YTGZQTBGroup"
+      ],
+      "mapIndex": 1.0,
+      "initChecked": false,
+      "isShortcut": false,
+      "isSwitch": false,
+      "group": "1",
+      "thumbUrl": "",
+      "mobile": false,
+      "showInfoWindow": false,
+      "isFit": false,
+      "rightMenu": false,
+      "security": false,
+      "identifyField": [],
+      "opacity": "1",
+      "isCoordSysTrans": false
+    },
+    {
+      "id": "ea3ld4v5-e51b-071e-6ed5-a7lmkr4f09e",
+      "showIndex": 3.0,
+      "parent": "20ju7gf2-8990-00f4-9090-189462g2b06d",
+      "label": "WMTS",
+      "layerTag": "WMTS",
+      "type": "wmts",
+      "url": "https://services.arcgisonline.com/arcgis/rest/services/Demographics/USA_Population_Density/MapServer/WMTS",
+      "visibleLayers": [
+        "Demographics_USA_Population_Density"
+      ],
+      "mapIndex": 1.0,
+      "initChecked": false,
+      "isShortcut": false,
+      "isSwitch": false,
+      "group": "1",
+      "thumbUrl": "",
+      "mobile": false,
+      "showInfoWindow": false,
+      "isFit": false,
+      "rightMenu": false,
+      "security": false,
+      "identifyField": [],
+      "opacity": "1",
+      "isCoordSysTrans": false
+    },
+    {
+      "id": "rj310795-e51b-071e-6ed5-a7lnkjy309e",
+      "showIndex": 3.0,
+      "parent": "00467ew2-4090-00f4-9096-1kl90mki895d",
+      "label": "WFS-GeoServer",
+      "layerTag": "WFS-GeoServer",
+      "geometryType": "Polygon",
+      "type": "geoserver-wfs",
+      "url": "http://192.168.11.77:8080//geoserver/postgis/wfs",
+      "visibleLayers": [
+        "postgis:bou2_4p"
+      ],
+      "mapIndex": 5.0,
+      "initChecked": false,
+      "isShortcut": false,
+      "isSwitch": false,
+      "group": "2",
+      "layerTable": "bou2p",
+      "thumbUrl": "",
+      "mobile": false,
+      "showInfoWindow": false,
+      "isFit": false,
+      "rightMenu": false,
+      "security": false,
+      "identifyField": [],
+      "opacity": "1",
+      "isCoordSysTrans": false
+    },
+    {
+      "id": "wg310795-e51b-071e-6ed5-a7lnok8565e",
+      "showIndex": 3.0,
+      "parent": "8087da1c-fcf9-ae47-b93c-6034fe22b2d2",
+      "label": "衢州市供地地块",
+      "layerTag": "gddk",
+      "type": "geoserver-wms",
+      "url": "http://192.168.11.77:8080//geoserver/postgis/wms",
+      "visibleLayers": [
+        "gddk"
+      ],
+      "mapIndex": 5.0,
+      "initChecked": false,
+      "isShortcut": false,
+      "isSwitch": false,
+      "group": "2",
+      "thumbUrl": "",
+      "mobile": false,
+      "showInfoWindow": false,
+      "isFit": false,
+      "rightMenu": false,
+      "security": false,
+      "identifyField": [{
+        "lyr": "http://192.168.11.77:8080/geoserver",
+        "search": "",
+        "display": ""
+      }],
+      "opacity": "1",
+      "isCoordSysTrans": false,
+      "layerTable": "",
+      "saveField": "OBJECTID",
+      "topologyCheck": 0,
+      "geometryType": "Polygon"
+    },
+    {
+      "id": "wg310795-lxdw-071e-6ed5-a7lnok8565e",
+      "showIndex": 3.0,
+      "parent": "8087da1c-fcf9-ae47-b93c-6034fe22b2d2",
+      "label": "衢州市基期零星地物",
+      "layerTag": "jqlxdw3308_2017",
+      "type": "geoserver-wms",
+      "url": "http://192.168.11.77:8080//geoserver/postgis/wms",
+      "visibleLayers": [
+        "jqlxdw3308_2017"
+      ],
+      "mapIndex": 5.0,
+      "initChecked": false,
+      "isShortcut": false,
+      "isSwitch": false,
+      "group": "2",
+      "thumbUrl": "",
+      "mobile": false,
+      "showInfoWindow": false,
+      "isFit": false,
+      "rightMenu": false,
+      "security": false,
+      "identifyField": [{
+        "lyr": "http://192.168.11.77:8080/geoserver",
+        "search": "",
+        "display": ""
+      }],
+      "opacity": "1",
+      "isCoordSysTrans": false,
+      "layerTable": "",
+      "saveField": "",
+      "topologyCheck": 0,
+      "geometryType": "Polygon"
+    },
+    {
+      "id": "wg310795-xzdw-071e-6ed5-a7lnok8565e",
+      "showIndex": 3.0,
+      "parent": "8087da1c-fcf9-ae47-b93c-6034fe22b2d2",
+      "label": "衢州市基期线状地物",
+      "layerTag": "jqxzdw3308_2017",
+      "type": "geoserver-wms",
+      "url": "http://192.168.11.77:8080//geoserver/postgis/wms",
+      "visibleLayers": [
+        "jqxzdw3308_2017"
+      ],
+      "mapIndex": 5.0,
+      "initChecked": false,
+      "isShortcut": false,
+      "isSwitch": false,
+      "group": "2",
+      "thumbUrl": "",
+      "mobile": false,
+      "showInfoWindow": false,
+      "isFit": false,
+      "rightMenu": false,
+      "security": false,
+      "identifyField": [{
+        "lyr": "http://192.168.11.77:8080/geoserver",
+        "search": "",
+        "display": ""
+      }],
+      "opacity": "1",
+      "isCoordSysTrans": false,
+      "layerTable": "",
+      "saveField": "",
+      "topologyCheck": 0,
+      "geometryType": "Polygon"
+    },
+    {
+      "id": "wg310795-e51b-071e-6ed5-a7lnkjy675e",
+      "showIndex": 3.0,
+      "parent": "00467ew2-4090-00f4-9096-1kl90mki895d",
+      "label": "衢州市城市开发边界",
+      "layerTag": "cskfbj",
+      "type": "geoserver-wfs",
+      "url": "http://192.168.11.77:8080//geoserver/postgis/wfs",
+      "visibleLayers": [
+        "cskfbj3308"
+      ],
+      "mapIndex": 5.0,
+      "initChecked": false,
+      "isShortcut": false,
+      "isSwitch": false,
+      "group": "2",
+      "thumbUrl": "",
+      "mobile": false,
+      "showInfoWindow": false,
+      "isFit": false,
+      "rightMenu": false,
+      "security": false,
+      "identifyField": [],
+      "opacity": "1",
+      "isCoordSysTrans": false,
+      "layerTable": "cskfbj3308",
+      "saveField": "OBJECTID",
+      "topologyCheck": 0,
+      "geometryType": "polygon"
+    },
+    {
+      "id": "ea310795-k7db-071e-6ok5-a7ssd40f09e",
+      "showIndex": 3.0,
+      "parent": "001j5dd2-4090-00f4-9096-18lkm48sd06d",
+      "label": "矢量切片-GeoServer",
+      "layerTag": "矢量切片-GeoServer",
+      "type": "geoserver-vectorTiled",
+      "url": "http://192.168.11.77:8080//geoserver/gwc/service/tms/1.0.0/postgis%3AYTGZQTBGroup@EPSG%3A4528@pbf",
+      "visibleLayers": [],
+      "mapIndex": 1.0,
+      "initChecked": false,
+      "isShortcut": false,
+      "isSwitch": false,
+      "group": "1",
+      "thumbUrl": "",
+      "mobile": false,
+      "showInfoWindow": false,
+      "isFit": false,
+      "rightMenu": false,
+      "security": false,
+      "identifyField": [],
+      "opacity": "1",
+      "isCoordSysTrans": false
+    },
+    {
+      "id": "ea310795-k7db-071e-6ok5-ak8g440f09e",
+      "showIndex": 3.0,
+      "parent": "002j5ew2-4090-00f4-9096-1kl9048sd06d",
+      "label": "切片-GeoServer",
+      "layerTag": "切片-GeoServer",
+      "type": "geoserver-tms",
+      "url": "http://192.168.11.77:8080//geoserver/gwc/service/tms/1.0.0/postgis%3AYTGZQTBGroup@EPSG%3A4528@png",
+      "visibleLayers": [],
+      "mapIndex": 1.0,
+      "initChecked": false,
+      "isShortcut": false,
+      "isSwitch": false,
+      "group": "1",
+      "thumbUrl": "",
+      "mobile": false,
+      "showInfoWindow": false,
+      "isFit": false,
+      "rightMenu": false,
+      "security": false,
+      "identifyField": [],
+      "opacity": "1",
+      "isCoordSysTrans": false
+    },
+    {
+      "id": "eals8g35-k7db-071e-6ok5-ak8klo9hr9e",
+      "showIndex": 3.0,
+      "parent": "002j5ew2-4090-00f4-9096-1kl9048sd06d",
+      "label": "csztgh",
+      "layerTag": "csztgh",
+      "type": "geoserver-tms",
+      "url": "http://192.168.11.77:8080//geoserver/gwc/service/tms/1.0.0/postgis%3Acsztgh@csztgh_4528@png",
+      "visibleLayers": [
+        "postgis:csztgh"
+      ],
+      "mapIndex": 1.0,
+      "initChecked": false,
+      "isShortcut": false,
+      "isSwitch": false,
+      "group": "1",
+      "thumbUrl": "",
+      "mobile": false,
+      "showInfoWindow": false,
+      "isFit": false,
+      "rightMenu": false,
+      "security": false,
+      "identifyField": [{
+        "lyr": "http://192.168.11.77:8080/geoserver",
+        "search": "",
+        "display": ""
+      }],
+      "opacity": "1",
+      "isCoordSysTrans": false
+    },
+    {
+      "id": "46mkd6ce-a23s-5085-3636-2acblk879bf0",
+      "showIndex": 99.0,
+      "parent": "909j5w2-4798-00f4-9566-2lk83d0906d",
+      "label": "土地利用现状",
+      "layerTag": "TDLYXZ_2017_A",
+      "type": "dynamic",
+      "geometryType": "polyline",
+      "topologyCheck": 2.0,
+      "url": "http://192.168.11.46/server/rest/services/TDLYXZ_2017_A/MapServer",
+      "visibleLayers": [
+        "0"
+      ],
+      "mapIndex": 99.0,
+      "initChecked": false,
+      "isShortcut": false,
+      "isSwitch": false,
+      "layerTable": "",
+      "group": "2",
+      "thumbUrl": "UploadImgs/46ed9fce-acaf-5085-3636-2dbd42ef9bf0_123.png",
+      "mobile": false,
+      "showInfoWindow": false,
+      "selectLayer": "0",
+      "isFit": false,
+      "rightMenu": false,
+      "opacity": "1",
+      "security": false,
+      "identifyField": [{
+        "lyr": "http://192.168.11.37:6080/arcgis/rest/services/LSSCGNQ3308/MapServer/0",
+        "search": "",
+        "display": ""
+      }],
+      "isCoordSysTrans": false
+    },
+    {
+      "id": "b17fc23e-66f1-c458-ad4b-22d28ccb5ddd",
+      "showIndex": 28.0,
+      "parent": "909j5w2-4798-00f4-9566-2lk83d0906d",
+      "label": "松阳行政区",
+      "layerTag": "XZQ_SY",
+      "type": "dynamic",
+      "geometryType": "polygon",
+      "topologyCheck": 2.0,
+      "url": "http://122.224.233.66:11766/arcgis/rest/services/XZQ_SY/MapServer",
+      "visibleLayers": [
+        "0",
+        "1"
+      ],
+      "mapIndex": 56.0,
+      "initChecked": false,
+      "isShortcut": false,
+      "isSwitch": false,
+      "layerTable": "",
+      "group": "1",
+      "thumbUrl": "UploadImgs/b17fc23e-66f1-c458-ad4b-22d28ccb5ddd_123.png",
+      "mobile": false,
+      "showInfoWindow": false,
+      "selectLayer": "0",
+      "isFit": false,
+      "rightMenu": false,
+      "opacity": "1",
+      "security": false,
+      "identifyField": [{
+          "lyr": "http://122.224.233.66:11766/arcgis/rest/services/XZQ_SY/MapServer/0",
+          "search": "",
+          "display": ""
+        },
+        {
+          "lyr": "http://122.224.233.66:11766/arcgis/rest/services/XZQ_SY/MapServer/1",
+          "search": "",
+          "display": ""
+        }
+      ]
+    },
+    {
+      "id": "cf310795-k7db-yang-yang-a7ssd40f09e",
+      "showIndex": 100.0,
+      "parent": "909j5w2-4798-00f4-9566-2lk83d0906d",
+      "label": "供地地块",
+      "layerTag": "ST_GDDK",
+      "type": "dynamic",
+      "geometryType": "polygon",
+      "topologyCheck": 2.0,
+      "url": "http://192.168.2.32:6080/arcgis/rest/services/ST_GDDK/MapServer",
+      "visibleLayers": [
+        "0",
+        "1"
+      ],
+      "mapIndex": 56.0,
+      "initChecked": false,
+      "isShortcut": false,
+      "isSwitch": false,
+      "layerTable": "",
+      "group": "1",
+      "thumbUrl": "",
+      "mobile": false,
+      "showInfoWindow": false,
+      "selectLayer": "0",
+      "isFit": false,
+      "rightMenu": false,
+      "opacity": "1",
+      "security": false,
+      "identifyField": [{
+        "lyr": "http://192.168.2.32:6080/arcgis/rest/services/ST_GDDK/MapServer/0",
+        "search": "",
+        "display": ""
+      }],
+      "isCoordSysTrans": false
+    }
+  ],
+  "solution": [{
+      "id": "1d2861e3-16b3-35cb-2f81-5a0ecbf6cfdd",
+      "name": "示例",
+      "layersId": [
+        "c165cd2f-ceaf-b62f-303a-30d87a32e682"
+      ],
+      "resourceLayersId": [
+        "P6F2D955F5A84BA882CC7B645974376C",
+        "c0f42536-ff15-b606-7691-ca975b6d4d7e",
+        "c165cd2f-ceaf-b62f-303a-30d87a32e682"
+      ],
+      "thumbnailUrl": ""
+    },
+    {
+      "id": "f9bfe428-aa54-da08-ae6a-1a33ad34b25c",
+      "name": "test",
+      "layersId": [
+        "699b3e5e-160d-606c-349f-05d91a2f03a8",
+        "b1e64b68-700c-86c0-7c48-131abd063e34"
+      ],
+      "resourceLayersId": [
+        "P6F2D955F5A84BA882CC7B645974376C",
+        "c0f42536-ff15-b606-7691-ca975b6d4d7e",
+        "14c22771-2559-efc6-70e1-742041d4344c",
+        "b1e64b68-700c-86c0-7c48-131abd063e34",
+        "8feaeeb6-c9de-7c85-9199-45c6e398da38",
+        "699b3e5e-160d-606c-349f-05d91a2f03a8",
+        "a3445602-29b8-459a-fe48-877e99bfb1d0"
+      ],
+      "thumbnailUrl": ""
+    },
+    {
+      "id": "84da6362-cdd2-6345-42bd-ea74d5a890f8",
+      "name": "松阳行政区",
+      "layersId": [
+        "b17fc23e-66f1-c458-ad4b-22d28ccb5ddd"
+      ],
+      "resourceLayersId": [
+        "P6F2D955F5A84BA882CC7B645974376C",
+        "c0f42536-ff15-b606-7691-ca975b6d4d7e",
+        "14c22771-2559-efc6-70e1-742041d4344c",
+        "04372ec0-71ba-ffa2-a8e8-33180277b62f",
+        "82a95658-396e-477f-6c53-516f35afa47c",
+        "017ea948-645f-11d7-6a9d-2fc4190f0051",
+        "c165cd2f-ceaf-b62f-303a-30d87a32e682",
+        "b17fc23e-66f1-c458-ad4b-22d28ccb5ddd"
+      ],
+      "thumbnailUrl": ""
+    }
+  ],
+  "analyze": [{
+      "label": "粮食生产功能区分析",
+      "id": "d480e75c-d35e-0b49-91af-871768329fde",
+      "parent": "root",
+      "checked": false,
+      "stat": true,
+      "fxType": "0",
+      "customUrl": "http://192.168.2.23:48079/WebReport_GH/ReportServer?reportlet\u003dwebgis%2FqsdlmxDetailReport.cpt\u0026op\u003dwrite",
+      "year": "2016",
+      "showIndex": 3.0,
+      "DKMCColumn": "rdmc",
+      "sortColumn": "乡镇名称",
+      "sortColumnAlias": "乡镇名称",
+      "tableName": "lsscgnq3308",
+      "isAutoGetXZQ": true,
+      "xzqCode": "",
+      "rightMenu": true
+    },
+    {
+      "label": "城市规划分析",
+      "id": "612e90a9-5dc5-0efc-aa43-5c9e0e9507d6",
+      "parent": "root",
+      "checked": false,
+      "stat": true,
+      "fxType": "2",
+      "customUrl": "",
+      "year": "",
+      "showIndex": 4.0,
+      "DKMCColumn": "dm",
+      "sortColumn": "mc",
+      "sortColumnAlias": "用地类型",
+      "tableName": "csztgh3308",
+      "isAutoGetXZQ": false,
+      "xzqCode": "",
+      "rightMenu": true,
+      "mxFields": "",
+      "fieldsAlias": ""
+    },
+    {
+      "label": "城市开发边界分析",
+      "id": "612e9mk9-5dc5-0efc-aa43-5c9ekj7507d6",
+      "parent": "root",
+      "checked": false,
+      "stat": true,
+      "fxType": "2",
+      "customUrl": "",
+      "year": "",
+      "showIndex": 4.0,
+      "DKMCColumn": "",
+      "sortColumn": "",
+      "sortColumnAlias": "",
+      "tableName": "",
+      "isAutoGetXZQ": false,
+      "xzqCode": "",
+      "rightMenu": true,
+      "mxFields": "",
+      "fieldsAlias": ""
+    },
+    {
+      "label": "供地地块分析",
+      "id": "612e9mk9-5dc5-0efc-aa43-5c9e3j8707d6",
+      "parent": "root",
+      "checked": false,
+      "stat": true,
+      "fxType": "2",
+      "customUrl": "",
+      "year": "",
+      "showIndex": 4.0,
+      "DKMCColumn": "",
+      "sortColumn": "",
+      "sortColumnAlias": "",
+      "tableName": "",
+      "isAutoGetXZQ": false,
+      "xzqCode": "",
+      "rightMenu": true,
+      "mxFields": "",
+      "fieldsAlias": ""
+    },
+    {
+      "label": "公益林分析",
+      "id": "612e9mk9-5dc5-0efc-aa43-5c2skd8507d6",
+      "parent": "root",
+      "checked": false,
+      "stat": true,
+      "fxType": "2",
+      "customUrl": "",
+      "year": "",
+      "showIndex": 4.0,
+      "DKMCColumn": "",
+      "sortColumn": "",
+      "sortColumnAlias": "",
+      "tableName": "",
+      "isAutoGetXZQ": false,
+      "xzqCode": "",
+      "rightMenu": true,
+      "mxFields": "",
+      "fieldsAlias": ""
+    }
+  ],
+  "freeLogin": [{
+    "id": "dec1a05c-4cd0-0d7e-5546-cbcae44111fe",
+    "name": "电子政务平台",
+    "ip": "192.168.11.76"
+  }],
+  "CustomMapService": "http://192.168.11.76/CustomPrinter/PrintService.asmx/Print",
+  "CustomMapTemplate": [{
+      "id": "404a715d-337c-43ce-bfad-3cc50480a56e",
+      "elements": [],
+      "pageSize": "自定义大小",
+      "stat": "enable",
+      "mapUnit": "meter",
+      "pageOri": "纵向",
+      "templateName": "地质灾害易发区 A4V.mxd"
+    },
+    {
+      "id": "7da250df-7357-42f8-859b-ccc1f198855e",
+      "elements": [{
+          "Key": "测试测试",
+          "Value": "caoqi"
+        },
+        {
+          "Key": "审核人员",
+          "Value": "caoqi"
+        },
+        {
+          "Key": "testtst",
+          "Value": ""
+        },
+        {
+          "Key": "制图作者",
+          "Value": ""
+        },
+        {
+          "Key": "编制单位",
+          "Value": ""
+        },
+        {
+          "Key": "标题",
+          "Value": ""
+        }
+      ],
+      "pageSize": "A4",
+      "stat": "enable",
+      "templateName": "浙江行政区.mxd",
+      "mapUnit": "meter",
+      "pageOri": "横向"
+    }
+  ],
+  "layoutId": "4444",
+  "RightMenuGroup": [{
+      "id": "menuRoot",
+      "label": "右键菜单",
+      "showIndex": 1.0,
+      "checked": true
+    },
+    {
+      "id": "5f5c6cfd-eb20-d5ca-10f5-d6b6fd594d35",
+      "label": "全球影像图",
+      "parent": "menuRoot",
+      "showIndex": 2.0,
+      "type": "layerItem",
+      "checked": true
+    },
+    {
+      "id": "058b0525-db2a-417d-1e42-4c9f1559ef9f",
+      "label": "矢量切片服务",
+      "parent": "menuRoot",
+      "showIndex": 4.0,
+      "type": "layerItem",
+      "checked": true
+    },
+    {
+      "id": "d480e75c-d35e-0b49-91af-871768329fde",
+      "label": "现状分析",
+      "parent": "menuRoot",
+      "showIndex": 6.0,
+      "type": "analyzeItem",
+      "checked": true
+    },
+    {
+      "id": "612e90a9-5dc5-0efc-aa43-5c9e0e9507d6",
+      "label": "项目分析",
+      "parent": "menuRoot",
+      "showIndex": 7.0,
+      "type": "analyzeItem",
+      "checked": true
+    },
+    {
+      "id": "4ba52786-d9a7-9d00-77bd-dee65bd73a81",
+      "label": "等级分析",
+      "parent": "menuRoot",
+      "showIndex": 5.0,
+      "type": "analyzeItem",
+      "checked": true
+    },
+    {
+      "id": "5ae2f379-7b56-3d7f-51b0-2938da02fd56",
+      "label": "新建分组",
+      "showIndex": 8.0,
+      "parent": "menuRoot",
+      "isGroup": true,
+      "checked": true
+    },
+    {
+      "id": "1f6a688e-8dd7-ffdd-7651-96a0edd7088a",
+      "label": "多主键",
+      "parent": "menuRoot",
+      "showIndex": 9.0,
+      "type": "layerItem",
+      "checked": true
+    },
+    {
+      "id": "0f313ad4-277d-2bf6-1a76-9262846efafb",
+      "label": "矢量服务",
+      "parent": "menuRoot",
+      "showIndex": 10.0,
+      "type": "layerItem",
+      "checked": true
+    },
+    {
+      "id": "e84a1dab-29f0-cda2-75aa-cd565100379b",
+      "label": "duo",
+      "parent": "menuRoot",
+      "showIndex": 11.0,
+      "type": "layerItem",
+      "checked": true
+    },
+    {
+      "id": "71ec8e29-3744-d59d-e5d3-339018b06437",
+      "label": "三调地类图斑",
+      "parent": "menuRoot",
+      "checked": true,
+      "type": "layerItem",
+      "showIndex": 12.0
+    }
+  ],
+  "version": "3.1",
+  "ESHost": "192.168.11.76",
+  "max_loading_layers": "100"
+}

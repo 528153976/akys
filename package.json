@@ -1,0 +1,45 @@
+{
+  "name": "akys",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "serve": "vue-cli-service serve",
+    "build": "vue-cli-service build",
+    "lint": "vue-cli-service lint"
+  },
+  "dependencies": {
+    "amfe-flexible": "^2.2.1",
+    "axios": "^0.18.0",
+    "base-64": "^1.0.0",
+    "core-js": "^3.1.2",
+    "crypto-js": "^3.1.9-1",
+    "element-ui": "^2.15.7",
+    "vue": "^2.6.10",
+    "vue-router": "^3.0.6",
+    "vuex": "^3.6.2",
+    "echarts": "^4.8.0",
+    "vue-echarts": "^4.0.3"
+  },
+  "devDependencies": {
+    "@vue/cli-plugin-babel": "^4.0.0",
+    "@vue/cli-plugin-eslint": "^4.0.0",
+    "@vue/cli-service": "^4.0.0",
+    "babel-eslint": "^10.0.1",
+    "compression-webpack-plugin": "^5.0.1",
+    "eslint": "^5.16.0",
+    "eslint-plugin-vue": "^5.0.0",
+    "less": "^3.0.4",
+    "less-loader": "^5.0.0",
+    "postcss-pxtorem": "^5.1.1",
+    "vue-template-compiler": "^2.6.10",
+    "webpack-bundle-analyzer": "^4.4.2"
+  },
+  "browserslist": [
+    "defaults",
+    "not ie < 11",
+    "last 2 versions",
+    "> 1%",
+    "iOS 7",
+    "last 3 iOS versions"
+  ]
+}
