@@ -12,18 +12,6 @@ export default {
             }
 
         }
-        Vue.prototype.$showImg = (imgPath, isSY) => {
-            if (!imgPath) {
-                return
-            }
-            let pre = isSY == true ? '' : '&water=false';
-            if (imgPath.slice(0, 4) == 'http') {
-                return imgPath
-            } else {
-                return `${MICRO_CONFIG.storage}file/show?relativeFilePath=${imgPath}&tempToken=${sessionStorage.getItem("tempToken") || ""}${pre}`
-            }
-
-        }
 
     }
 }

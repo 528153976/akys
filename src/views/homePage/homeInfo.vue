@@ -75,10 +75,3 @@ export default {
 }
 </style>
 
-<style>
-::v-deep .el-button--success {
-  color: #fff;
-  background-color: #65b7ff;
-  border-color: #65b7ff;
-}
-</style>

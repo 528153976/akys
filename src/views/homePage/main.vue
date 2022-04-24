@@ -19,13 +19,40 @@
           <div class="homeText">{{ v.text }}</div>
           <div class="homeMore" @click="more(v.type)">查看更多 ></div>
         </div>
-        <div class="homeList">
+        <div class="homeList" v-if="v.type == 1 || v.type == 2">
           <item-demo
             v-for="(element, index) in 4"
             :key="index"
             :title="v.title"
             :type="v.type"
           ></item-demo>
+        </div>
+        <div class="homeList" v-if="v.type == 3 || v.type == 4">
+          <img-demo
+            v-for="(element, index) in 4"
+            :key="index"
+            :title="v.title"
+            :type="v.type"
+          ></img-demo>
+        </div>
+      </div>
+      <div class="homeDemo">
+        <div class="homeTop">
+          <div class="homeTitle">
+            <div class="homeName">打字测速</div>
+            <div class="homeColor"></div>
+          </div>
+          <div class="homeText">Typing Speed</div>
+        </div>
+        <div class="homeList">
+          <div class="homeSpeed">
+            <img src="@/assets/img/home/swiper.jpg" alt="" />
+          </div>
+          <div class="homeSpeed">
+            <el-button type="primary" class="login-button"
+              >点击开始测速</el-button
+            >
+          </div>
         </div>
       </div>
     </div>
@@ -34,8 +61,9 @@
 
 <script>
 import itemDemo from "@/views/components/itemDemo.vue";
+import imgDemo from "@/views/components/imgDemo.vue";
 export default {
-  components: { itemDemo },
+  components: { itemDemo, imgDemo },
   data() {
     return {
       typeList: [
@@ -138,6 +166,25 @@ export default {
     padding: 50px;
     display: flex;
     justify-content: space-between;
+  }
+  .homeSpeed {
+    width: 48%;
+    height: 350px;
+    text-align: center;
+    line-height: 350px;
+    > img {
+      width: 100%;
+      height: 100%;
+      border-radius: 5px;
+    }
+  }
+  .login-button {
+    border-radius: 26px;
+    width: 152px;
+    height: 51px;
+    font-size: 18px;
+    font-weight: 700;
+    color: #fff;
   }
 }
 </style>

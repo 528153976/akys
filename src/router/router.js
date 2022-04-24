@@ -3,7 +3,6 @@ import VueRouter from 'vue-router'
 Vue.use(VueRouter);
 import home from './home.js'
 const RouterModel = new VueRouter({
-  base: '/akys/',
   mode: 'history',
   routes: [{
     path: '/',
@@ -12,7 +11,15 @@ const RouterModel = new VueRouter({
     children: [
       ...home
     ]
-  }
+  },
+  {
+    path: '/login',
+    name: 'login',
+    component: () => import('@/views/login.vue'),
+    meta: {
+      requireAuth: false, // 判断是否需要登录
+    }
+  },
   ]
 });
 

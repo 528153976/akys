@@ -9,16 +9,16 @@
         :model="formLabelAlign"
         :rules="formRules"
       >
-        <el-form-item label="手机号" prop="iphone">
+        <el-form-item label="手机号" prop="phone">
           <el-input
-            v-model="formLabelAlign.iphone"
+            v-model="formLabelAlign.phone"
             prefix-icon="el-icon-user-solid"
             placeholder="请输入手机号"
           ></el-input>
         </el-form-item>
-        <el-form-item label="ID号" prop="number">
+        <el-form-item label="ID号" prop="code">
           <el-input
-            v-model="formLabelAlign.number"
+            v-model="formLabelAlign.code"
             prefix-icon="el-icon-postcard"
             placeholder="请输入ID号"
           ></el-input>
@@ -32,24 +32,30 @@
 </template>
 
 <script>
+import loginService from "@/services/comon.service";
 export default {
   data() {
     return {
       formLabelAlign: {
-        iphone: "",
-        number: "",
+        phone: "",
+        code: "",
       },
       formRules: {
-        iphone: [{ required: true, message: "不能为空", trigger: "blur" }],
-        number: [{ required: true, message: "不能为空", trigger: "blur" }],
+        phone: [{ required: true, message: "不能为空", trigger: "blur" }],
+        code: [{ required: true, message: "不能为空", trigger: "blur" }],
       },
     };
   },
   methods: {
     login() {
-      this.$router.push("/homePage");
-      this.$refs.formRef.validate((valid) => {
+      this.$refs.formRef.validate(async (valid) => {
         if (valid) {
+          let res = await loginService.login(this.formLabelAlign);
+          if (res.status == 0) {
+            this.$router.push("/homePage");
+          } else {
+            this.$message.error("登录失败");
+          }
         } else {
           return false;
         }
