@@ -15,7 +15,9 @@
         </template>
       </el-table-column>
       <el-table-column label="图片" width="350">
-        <img class="imgCss" src="@/assets/img/home/swiper.jpg" alt="" />
+        <template slot-scope="scope">
+          <img class="imgCss" :src="$showPic(scope.row.filepath)" alt="" />
+        </template>
       </el-table-column>
       <el-table-column label="操作" width="100">
         <template slot-scope="scope">
@@ -28,20 +30,7 @@
       :visible.sync="dialogFormVisible"
       width="500px"
     >
-      <el-upload
-        class="upload-demo"
-        action="https://jsonplaceholder.typicode.com/posts/"
-        :on-preview="handlePreview"
-        :on-remove="handleRemove"
-        :before-remove="beforeRemove"
-        multiple
-        :limit="3"
-        :on-exceed="handleExceed"
-        :file-list="fileList"
-      >
-        <el-button size="small" type="primary">点击上传</el-button>
-        <div slot="tip" class="el-upload__tip">只能上传jpg/png文件</div>
-      </el-upload>
+      <img-upload />
       <div slot="footer" class="dialog-footer">
         <el-button @click="dialogFormVisible = false">取 消</el-button>
         <el-button type="primary" @click="dialogFormVisible = false"
@@ -53,63 +42,29 @@
 </template>
 
 <script>
+import ImgUpload from "@/views/components/imgUpload.vue";
+import loginService from "@/services/comon.service";
 export default {
-  components: {},
-  props: {},
+  components: { ImgUpload },
   data() {
     return {
       imageUrl: "",
       dialogFormVisible: false,
-      tableData: [
-        {
-          number: "20220420153463",
-          name: "王小虎",
-          iphone: "1312341234",
-        },
-        {
-          number: "20220420153463",
-          name: "王小虎",
-          iphone: "1312341234",
-        },
-        {
-          number: "20220420153463",
-          name: "王小虎",
-          iphone: "1312341234",
-        },
-        {
-          number: "20220420153463",
-          name: "王小虎",
-          iphone: "1312341234",
-        },
-        {
-          number: "20220420153463",
-          name: "王小虎",
-          iphone: "1312341234",
-        },
-      ],
+      tableData: [],
     };
   },
-  watch: {},
-  computed: {},
   methods: {
-    handleAvatarSuccess(res, file) {
-      this.imageUrl = URL.createObjectURL(file.raw);
-    },
-    beforeAvatarUpload(file) {
-      const isJPG = file.type === "image/jpeg";
-      const isLt2M = file.size / 1024 / 1024 < 2;
-
-      if (!isJPG) {
-        this.$message.error("上传头像图片只能是 JPG 格式!");
+    async getList() {
+      let res = await loginService.listFileInfo({ ywlx: "T001_Y001" });
+      if (res.status == 0) {
+        this.tableData = res.data.records;
       }
-      if (!isLt2M) {
-        this.$message.error("上传头像图片大小不能超过 2MB!");
-      }
-      return isJPG && isLt2M;
     },
   },
   created() {},
-  mounted() {},
+  mounted() {
+    this.getList();
+  },
 };
 </script>
 <style lang="less" scoped>
@@ -118,6 +73,7 @@ export default {
   position: relative;
   .imgCss {
     width: 300px;
+    height: 200px;
   }
   .homeBtn {
     position: absolute;

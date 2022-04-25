@@ -4,27 +4,24 @@
       <el-input
         placeholder="请输入姓名关键词"
         class="homeInput"
-        v-model="input"
+        v-model="bodyInfo.name"
       >
         <i slot="prefix" class="el-input__icon el-icon-search"></i> </el-input
-      ><el-button type="success" class="homeBtn">搜索</el-button>
-      <el-button
-        type="success"
-        class="homeBtn"
-        @click="dialogFormVisible = true"
-        >新增</el-button
+      ><el-button type="success" class="homeBtn" @click="getList()"
+        >搜索</el-button
       >
+      <el-button type="success" class="homeBtn" @click="add">新增</el-button>
     </div>
     <el-table
       :data="tableData"
       style="width: 100%"
       height="600px"
       align="center"
+      v-loading="loading"
     >
-      <el-table-column prop="number" label="ID号" width="250">
-      </el-table-column>
+      <el-table-column prop="code" label="ID号" width="250"> </el-table-column>
       <el-table-column prop="name" label="姓名" width="250"> </el-table-column>
-      <el-table-column prop="iphone" label="手机号" width="250">
+      <el-table-column prop="phone" label="手机号" width="250">
       </el-table-column>
       <el-table-column label="操作" width="100">
         <template slot-scope="scope">
@@ -37,27 +34,42 @@
             "
             >修改</el-button
           >
-          <el-button type="text" size="small">删除</el-button>
+          <el-button type="text" size="small" @click="deleteInfo(scope.row)"
+            >删除</el-button
+          >
         </template>
       </el-table-column>
     </el-table>
     <el-dialog title="新增账号" :visible.sync="dialogFormVisible" width="550px">
       <el-form :model="form">
         <el-form-item label="ID号：" label-width="80px">
-          <el-input v-model="form.number">
-            <template slot="append">生成</template>
+          <el-input v-model="form.code">
+            <template slot="append">
+              <span style="cursor: pointer" @click="generate()">生成</span>
+            </template>
           </el-input>
         </el-form-item>
         <el-form-item label="姓名：" label-width="80px">
           <el-input v-model="form.name"></el-input>
         </el-form-item>
         <el-form-item label="手机号：" label-width="80px">
-          <el-input v-model="form.iphone"></el-input>
+          <el-input v-model="form.phone"></el-input>
+        </el-form-item>
+        <el-form-item label="权限：" label-width="80px">
+          <el-select v-model="form.role" placeholder="请选择活动区域">
+            <el-option label="管理员" value="0"></el-option>
+            <el-option label="普通权限" value="1"></el-option>
+          </el-select>
         </el-form-item>
       </el-form>
       <div slot="footer" class="dialog-footer">
         <el-button @click="dialogFormVisible = false">取 消</el-button>
-        <el-button type="primary" @click="dialogFormVisible = false"
+        <el-button
+          type="primary"
+          @click="
+            dialogFormVisible = false;
+            userSave();
+          "
           >确 定</el-button
         >
       </div>
@@ -66,48 +78,79 @@
 </template>
 
 <script>
+import loginService from "@/services/comon.service";
 export default {
   components: {},
   props: {},
   data() {
     return {
+      loading: false,
       input: "",
-      form: {},
+      bodyInfo: {
+        name: "",
+        pageNum: 1,
+        pageSize: 999,
+      },
+      form: {
+        code: "",
+        name: "",
+        phone: "",
+      },
       dialogFormVisible: false,
-      tableData: [
-        {
-          number: "20220420153463",
-          name: "王小虎",
-          iphone: "1312341234",
-        },
-        {
-          number: "20220420153463",
-          name: "王小虎",
-          iphone: "1312341234",
-        },
-        {
-          number: "20220420153463",
-          name: "王小虎",
-          iphone: "1312341234",
-        },
-        {
-          number: "20220420153463",
-          name: "王小虎",
-          iphone: "1312341234",
-        },
-        {
-          number: "20220420153463",
-          name: "王小虎",
-          iphone: "1312341234",
-        },
-      ],
+      tableData: [],
     };
   },
-  watch: {},
-  computed: {},
-  methods: {},
-  created() {},
-  mounted() {},
+  methods: {
+    async getList() {
+      this.loading = true;
+      let res = await loginService.listuser(this.bodyInfo);
+      this.loading = false;
+      if (res.status == 0) {
+        this.tableData = res.data?.records;
+      }
+    },
+    async userSave() {
+      let res = await loginService.userSave(this.form);
+      if (res.status == 0) {
+        this.getList();
+      }
+    },
+    generate() {
+      this.form.code = new Date().getTime();
+    },
+    add() {
+      this.dialogFormVisible = true;
+      this.form = {
+        code: "",
+        name: "",
+        phone: "",
+        role: "1",
+      };
+    },
+    async deleteInfo(row) {
+      this.$confirm("此操作将永久删除, 是否继续?", "提示", {
+        confirmButtonText: "确定",
+        cancelButtonText: "取消",
+        type: "warning",
+      })
+        .then(async () => {
+          let res = await loginService.deleteInfo(row);
+          if (res.status == 0) {
+            this.$message.success("删除成功");
+            this.getList();
+          }
+        })
+        .catch(() => {
+          this.$message({
+            type: "info",
+            message: "已取消删除",
+          });
+        });
+    },
+  },
+  mounted() {
+    this.getList();
+  },
 };
 </script>
 <style lang="less" scoped>

@@ -49,7 +49,7 @@ export default {
   justify-content: center;
   .homeWrap {
     width: 1373px;
-    min-height: 720px;
+    min-height: 820px;
     background-color: #fff;
   }
 }

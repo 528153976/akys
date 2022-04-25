@@ -70,7 +70,7 @@ export default {
   height: calc(100vh - 200px);
   background-color: #f4f4f4;
   overflow: hidden;
-  background-image: url("../assets/img/loginbg.jpg");
+  background-image: url("../assets/img/akys/loginbg.jpg");
   background-size: 100% 100%;
   position: relative;
   .loginWrap {
