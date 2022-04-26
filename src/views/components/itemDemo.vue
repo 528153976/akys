@@ -13,10 +13,6 @@
       </div>
     </div>
     <p>{{ title }}</p>
-    <div class="itemOperate" v-if="isEdit">
-      <el-button type="success">修改</el-button>
-      <el-button type="warning">删除</el-button>
-    </div>
     <div class="itemMask" v-if="dialogVisible" @click="dialogVisible = false">
       <iframe
         width="80%"
@@ -25,13 +21,9 @@
         frameborder="0"
         v-if="type != 4"
       ></iframe>
-      <el-carousel style="width: 1373px" height="700px" v-else>
-        <el-carousel-item v-for="item in 4" :key="item">
-          <img
-            style="width: 1373px; height: 700px"
-            src="@/assets/img/home/swiper.jpg"
-            alt=""
-          />
+      <el-carousel style="width: 1373px" height="700px" v-if="type == 4">
+        <el-carousel-item v-for="item in 1" :key="item">
+          <img style="width: 1373px; height: 700px" :src="iframeUrl" alt="" />
         </el-carousel-item>
       </el-carousel>
     </div>
@@ -43,11 +35,14 @@ export default {
   props: {
     title: {
       type: String,
-      default: "标题",
+      default: "",
     },
     type: {
       type: String,
       default: "1",
+    },
+    value: {
+      type: Object,
     },
     isEdit: {
       type: Boolean,
@@ -57,17 +52,18 @@ export default {
   created() {
     switch (this.type) {
       case "1":
-        this.iframeUrl =
-          "https://video-c.ldycdn.com/ipBklKqllrr-inipKBllrqRliSlojlnrpnmmjkr-6a525ea8b8ab45e3afa274656e792b81.mp4";
+        this.iframeUrl = this.$showVideo(this.value?.filepath, true);
+        // "https://video-c.ldycdn.com/ipBklKqllrr-inipKBllrqRliSlojlnrpnmmjkr-6a525ea8b8ab45e3afa274656e792b81.mp4";
         break;
       case "2":
-        this.iframeUrl =
-          "https://video-c.ldycdn.com/ipBklKqllrr-inipKBllrqRliSlojlnrpnmmjkr-6a525ea8b8ab45e3afa274656e792b81.mp4";
+        this.iframeUrl = this.$showVideo(this.value?.filepath, true);
+        // "https://video-c.ldycdn.com/ipBklKqllrr-inipKBllrqRliSlojlnrpnmmjkr-6a525ea8b8ab45e3afa274656e792b81.mp4";
         break;
       case "3":
-        this.iframeUrl = "static/test.pdf";
+        this.iframeUrl = this.$showPic(this.value?.filepath, true);
         break;
       case "4":
+        this.iframeUrl = this.$showPic(this.value?.filepath, true);
         break;
       default:
         break;

@@ -2,10 +2,10 @@
   <div class="homePage">
     <div class="homeWrap">
       <el-carousel height="400px">
-        <el-carousel-item v-for="item in 4" :key="item">
+        <el-carousel-item v-for="(item, index) in swiperList" :key="index">
           <img
             style="width: 1373px; height: 400px"
-            src="@/assets/img/home/swiper.jpg"
+            :src="$showPic(item.filepath)"
             alt=""
           />
         </el-carousel-item>
@@ -19,19 +19,39 @@
           <div class="homeText">{{ v.text }}</div>
           <div class="homeMore" @click="more(v.type)">查看更多 ></div>
         </div>
-        <div class="homeList" v-if="v.type == 1 || v.type == 2">
+        <div class="homeList" v-if="v.type == 1">
           <item-demo
-            v-for="(element, index) in 4"
+            v-for="(element, index) in videoList"
             :key="index"
-            :title="v.title"
+            :value="element"
+            :title="element.ywbs"
             :type="v.type"
           ></item-demo>
         </div>
-        <div class="homeList" v-if="v.type == 3 || v.type == 4">
-          <img-demo
-            v-for="(element, index) in 4"
+        <div class="homeList" v-if="v.type == 2">
+          <item-demo
+            v-for="(element, index) in audioList"
             :key="index"
-            :title="v.title"
+            :value="element"
+            :title="element.ywbs"
+            :type="v.type"
+          ></item-demo>
+        </div>
+        <div class="homeList" v-if="v.type == 3">
+          <img-demo
+            v-for="(element, index) in fileList"
+            :key="index"
+            :value="element"
+            :title="element.ywbs"
+            :type="v.type"
+          ></img-demo>
+        </div>
+        <div class="homeList" v-if="v.type == 4">
+          <img-demo
+            v-for="(element, index) in imgList"
+            :key="index"
+            :value="element"
+            :title="element.ywbs"
             :type="v.type"
           ></img-demo>
         </div>
@@ -62,10 +82,16 @@
 <script>
 import itemDemo from "@/views/components/itemDemo.vue";
 import imgDemo from "@/views/components/imgDemo.vue";
+import loginService from "@/services/comon.service";
 export default {
   components: { itemDemo, imgDemo },
   data() {
     return {
+      swiperList: [],
+      videoList: [],
+      audioList: [],
+      fileList: [],
+      imgList: [],
       typeList: [
         {
           title: "热门视频",
@@ -90,7 +116,13 @@ export default {
       ],
     };
   },
-  mounted() {},
+  mounted() {
+    this.getSwiperList();
+    this.getVideoList();
+    this.getAudioList();
+    this.getFileList();
+    this.getImgList();
+  },
   methods: {
     more(type) {
       this.$router.push({
@@ -99,6 +131,36 @@ export default {
           type,
         },
       });
+    },
+    async getSwiperList() {
+      let res = await loginService.listFileInfo({ ywlx: "T001_Y002" });
+      if (res.status == 0) {
+        this.swiperList = res.data.records;
+      }
+    },
+    async getVideoList() {
+      let res = await loginService.listFileInfo({ ywlx: "T003" });
+      if (res.status == 0) {
+        this.videoList = res.data.records;
+      }
+    },
+    async getAudioList() {
+      let res = await loginService.listFileInfo({ ywlx: "T004" });
+      if (res.status == 0) {
+        this.audioList = res.data.records;
+      }
+    },
+    async getFileList() {
+      let res = await loginService.listFileInfo({ ywlx: "T002" });
+      if (res.status == 0) {
+        this.fileList = res.data.records;
+      }
+    },
+    async getImgList() {
+      let res = await loginService.listFileInfo({ ywlx: "T001_Y003" });
+      if (res.status == 0) {
+        this.imgList = res.data.records;
+      }
     },
   },
 };

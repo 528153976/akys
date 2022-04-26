@@ -6,19 +6,19 @@
           <account />
         </el-tab-pane>
         <el-tab-pane label="首页轮播图">
-          <swiper />
+          <swiper fileywlx="T001_Y002" />
         </el-tab-pane>
         <el-tab-pane label="视频管理">
-          <file-admin />
+          <file-admin accept="video/*" fileywlx="T003" fmywlx="T003_Y003" />
         </el-tab-pane>
         <el-tab-pane label="音频管理">
-          <file-admin />
+          <file-admin accept="audio/*" fileywlx="T004" fmywlx="T004_Y003" />
         </el-tab-pane>
         <el-tab-pane label="文件管理">
-          <file-admin />
+          <file-admin accept=".pdf" fileywlx="T002" fmywlx="T002_Y003" />
         </el-tab-pane>
         <el-tab-pane label="图片管理">
-          <file-admin />
+          <file-admin accept="image/*" fileywlx="T001_Y003" />
         </el-tab-pane>
       </el-tabs>
     </div>

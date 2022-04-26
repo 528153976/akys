@@ -7,7 +7,9 @@ import "@/utils/axios"
 import "@/assets/css/reset.css"
 
 import $showPic from "@/utils/globalFunction"
+import $showVideo from "@/utils/globalFunction"
 Vue.use($showPic)
+Vue.use($showVideo)
 import ElementUI from 'element-ui';
 import 'element-ui/lib/theme-chalk/index.css';
 Vue.use(ElementUI)
@@ -23,9 +25,9 @@ router.beforeEach((to, from, next) => {
   // 不需要登录
   next()
 })
-  new Vue({
-    router,
-    store,
-    render: (h) => h(App),
-  }).$mount("#app")
+new Vue({
+  router,
+  store,
+  render: (h) => h(App),
+}).$mount("#app")
 

@@ -23,6 +23,11 @@
       <el-table-column prop="name" label="姓名" width="250"> </el-table-column>
       <el-table-column prop="phone" label="手机号" width="250">
       </el-table-column>
+      <el-table-column prop="role" label="权限" width="250">
+        <template slot-scope="scope">
+          {{ scope.row.role == 0 ? "管理员" : "普通权限" }}
+        </template>
+      </el-table-column>
       <el-table-column label="操作" width="100">
         <template slot-scope="scope">
           <el-button

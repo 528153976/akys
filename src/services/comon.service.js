@@ -13,14 +13,6 @@ const loginService = {
 			responseType: 'json'
 		})
 	},
-	listFileInfo(data) {
-		return axios.request({
-			url: MICRO_CONFIG.api + 'file/listFileInfo',
-			method: 'post',
-			data: data,
-			responseType: 'json'
-		})
-	},
 	listuser(data) {
 		return axios.request({
 			url: MICRO_CONFIG.api + '/user/listuser',
@@ -55,9 +47,26 @@ const loginService = {
 	},
 	listFileInfo(data) {
 		return axios.request({
-			url: MICRO_CONFIG.api + '/file/listFileInfo',
+			url: MICRO_CONFIG.api + 'file/listFileInfo',
 			method: 'post',
 			data: data,
+			responseType: 'json'
+		})
+	},
+	deleteFile(id) {
+		return axios.request({
+			url: MICRO_CONFIG.api + 'file/delete/' + id,
+			method: 'get',
+			responseType: 'json'
+		})
+	},
+	fileWater(id) {
+		return axios.request({
+			url: MICRO_CONFIG.api + 'file/water',
+			method: 'get',
+			params: {
+				id
+			},
 			responseType: 'json'
 		})
 	},
