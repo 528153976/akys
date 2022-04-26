@@ -1,10 +1,7 @@
 <template>
   <div class="itemDemo">
     <div class="itemImg" @click="open()">
-      <img
-        src="https://ilrorwxhokqoli5p.ldycdn.com/cloud/liBplKqllrSRjjkmpkjkiq/42002.png"
-        alt=""
-      />
+      <img :src="$showPic(fmImg)" alt="" />
       <div class="itemWrap">
         <i class="el-icon-video-play" v-if="type == 1"></i>
         <i class="el-icon-video-play" v-if="type == 2"></i>
@@ -31,6 +28,7 @@
 </template>
 
 <script>
+import loginService from "@/services/comon.service";
 export default {
   props: {
     title: {
@@ -52,14 +50,17 @@ export default {
   created() {
     switch (this.type) {
       case "1":
+        this.fmywlx = "T003_Y003";
         this.iframeUrl = this.$showVideo(this.value?.filepath, true);
         // "https://video-c.ldycdn.com/ipBklKqllrr-inipKBllrqRliSlojlnrpnmmjkr-6a525ea8b8ab45e3afa274656e792b81.mp4";
         break;
       case "2":
+        this.fmywlx = "T004_Y003";
         this.iframeUrl = this.$showVideo(this.value?.filepath, true);
         // "https://video-c.ldycdn.com/ipBklKqllrr-inipKBllrqRliSlojlnrpnmmjkr-6a525ea8b8ab45e3afa274656e792b81.mp4";
         break;
       case "3":
+        this.fmywlx = "T002_Y003";
         this.iframeUrl = this.$showPic(this.value?.filepath, true);
         break;
       case "4":
@@ -69,8 +70,13 @@ export default {
         break;
     }
   },
+  mounted() {
+    this.getFmimg();
+  },
   data() {
     return {
+      fmywlx: "",
+      fmImg: "",
       iframeUrl: "",
       dialogVisible: false,
       url: "https://fuss10.elemecdn.com/e/5d/4a731a90594a4af544c0c25941171jpeg.jpeg",
@@ -82,8 +88,23 @@ export default {
   },
   methods: {
     open() {
-      console.log(111);
       this.dialogVisible = true;
+    },
+    async getFmimg() {
+      if (this.value?.fmpath && this.fmywlx) {
+        let res = await loginService.listFileInfo({
+          id: this.value?.fmpath,
+          ywlx: this.fmywlx,
+        });
+        if (res.status == 0) {
+          this.fmImg =
+            (res.data.records || []).length > 0
+              ? res.data.records[0].filepath
+              : "";
+          console.log("fmimg", this.fmImg);
+        }
+        console.log(res);
+      }
     },
   },
 };

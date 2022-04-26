@@ -11,9 +11,6 @@
       <p>联系电话：0571-87711623</p> -->
       <div>
         <p class="btn" @click="$router.push('/homePage')">首页</p>
-        <a class="btn" href="https://dazi.kukuw.com/" target="_blank"
-          >打字测速</a
-        >
         <p class="btn" @click="$router.push('/homeAdmin')">管理端</p>
         <p class="btn" @click="$router.push('/login')">登录</p>
       </div>

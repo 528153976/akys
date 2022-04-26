@@ -69,7 +69,7 @@
             <img src="@/assets/img/home/swiper.jpg" alt="" />
           </div>
           <div class="homeSpeed">
-            <el-button type="primary" class="login-button"
+            <el-button type="primary" class="login-button" @click="openHtml"
               >点击开始测速</el-button
             >
           </div>
@@ -161,6 +161,9 @@ export default {
       if (res.status == 0) {
         this.imgList = res.data.records;
       }
+    },
+    openHtml() {
+      window.open("https://dazi.kukuw.com/");
     },
   },
 };
