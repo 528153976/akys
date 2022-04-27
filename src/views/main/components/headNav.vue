@@ -6,13 +6,10 @@
         alt=""
         @click="$router.push('/homePage')"
       />
-      <!-- <p>微信：ACEKINGUSA</p>
-      <p>电子邮件：admission@iconeducn.com</p>
-      <p>联系电话：0571-87711623</p> -->
-      <div>
+      <div v-if="isShow">
         <p class="btn" @click="$router.push('/homePage')">首页</p>
         <p class="btn" @click="$router.push('/homeAdmin')">管理端</p>
-        <p class="btn" @click="$router.push('/login')">登录</p>
+        <p class="btn" @click="$router.push('/login')">退出登录</p>
       </div>
     </div>
   </div>
@@ -21,7 +18,9 @@
 <script>
 export default {
   data() {
-    return {};
+    return {
+      isShow: localStorage.getItem("code") == 10 ? true : false,
+    };
   },
   methods: {
     handleSelect() {},

@@ -1,7 +1,7 @@
 <template>
   <div class="itemDemo">
     <div class="itemImg" @click="open()">
-      <img :src="$showPic(fmImg)" alt="" />
+      <img :src="$showPic(value.fmpath)" alt="" />
       <div class="itemWrap">
         <i class="el-icon-video-play" v-if="type == 1"></i>
         <i class="el-icon-video-play" v-if="type == 2"></i>
@@ -71,7 +71,7 @@ export default {
     }
   },
   mounted() {
-    this.getFmimg();
+    // this.getFmimg();
   },
   data() {
     return {

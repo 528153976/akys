@@ -139,19 +139,19 @@ export default {
       }
     },
     async getVideoList() {
-      let res = await loginService.listFileInfo({ ywlx: "T003" });
+      let res = await loginService.listFileInfo({ ywlx: "T003_Y001" });
       if (res.status == 0) {
         this.videoList = res.data.records;
       }
     },
     async getAudioList() {
-      let res = await loginService.listFileInfo({ ywlx: "T004" });
+      let res = await loginService.listFileInfo({ ywlx: "T004_Y001" });
       if (res.status == 0) {
         this.audioList = res.data.records;
       }
     },
     async getFileList() {
-      let res = await loginService.listFileInfo({ ywlx: "T002" });
+      let res = await loginService.listFileInfo({ ywlx: "T002_Y001" });
       if (res.status == 0) {
         this.fileList = res.data.records;
       }

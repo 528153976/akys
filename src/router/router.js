@@ -6,7 +6,8 @@ const RouterModel = new VueRouter({
   mode: 'history',
   routes: [{
     path: '/',
-    redirect: '/login',
+    name: 'home',
+    redirect: '/homePage',
     component: () => import('@/views/main/main.vue'),
     children: [
       ...home

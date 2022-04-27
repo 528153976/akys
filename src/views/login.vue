@@ -33,6 +33,7 @@
 
 <script>
 import loginService from "@/services/comon.service";
+import router from "../router/router.js";
 export default {
   data() {
     return {
@@ -50,8 +51,28 @@ export default {
     login() {
       this.$refs.formRef.validate(async (valid) => {
         if (valid) {
+          const loading = this.$loading({
+            lock: true,
+            text: "Loading",
+            spinner: "el-icon-loading",
+            background: "rgba(0, 0, 0, 0.7)",
+          });
           let res = await loginService.login(this.formLabelAlign);
           if (res.status == 0) {
+            loading.close();
+            if (res.data?.role == 0) {
+              router.addRoute("home", {
+                path: "/homeAdmin",
+                name: "homeAdmin",
+                component: () => import("@/views/homeAdmin/main.vue"),
+                meta: {
+                  requireAuth: false, // 判断是否需要登录
+                },
+              });
+              localStorage.setItem("code", 10);
+            } else {
+              localStorage.setItem("code", 123);
+            }
             this.$router.push("/homePage");
           } else {
             this.$message.error("登录失败");
@@ -67,7 +88,7 @@ export default {
 <style lang="less" scoped>
 .login {
   width: 100%;
-  height: calc(100vh - 200px);
+  height: 100vh;
   background-color: #f4f4f4;
   overflow: hidden;
   background-image: url("../assets/img/akys/loginbg.jpg");
@@ -82,8 +103,8 @@ export default {
     overflow: hidden;
     padding: 26px 80px;
     position: absolute;
-    right: 100px;
-    top: 160px;
+    right: 10%;
+    top: 20%;
     > p:nth-child(1) {
       width: 100%;
       text-align: center;

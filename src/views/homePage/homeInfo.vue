@@ -8,15 +8,45 @@
           v-model="input"
         >
           <i slot="prefix" class="el-input__icon el-icon-search"></i> </el-input
-        ><el-button type="success" class="homeBtn">立即搜索</el-button>
+        ><el-button type="success" class="homeBtn" @click="getList()"
+          >立即搜索</el-button
+        >
       </div>
-      <div class="homeList">
+      <div class="homeList" v-if="type == 1">
         <item-demo
-          v-for="(element, index) in 22"
+          v-for="(element, index) in fileList"
           :key="index"
-          :title="1"
-          :type="$route.query.type"
+          :value="element"
+          :title="element.ywbs"
+          :type="type"
         ></item-demo>
+      </div>
+      <div class="homeList" v-if="type == 2">
+        <item-demo
+          v-for="(element, index) in fileList"
+          :key="index"
+          :value="element"
+          :title="element.ywbs"
+          :type="type"
+        ></item-demo>
+      </div>
+      <div class="homeList" v-if="type == 3">
+        <img-demo
+          v-for="(element, index) in fileList"
+          :key="index"
+          :value="element"
+          :title="element.ywbs"
+          :type="type"
+        ></img-demo>
+      </div>
+      <div class="homeList" v-if="type == 4">
+        <img-demo
+          v-for="(element, index) in fileList"
+          :key="index"
+          :value="element"
+          :title="element.ywbs"
+          :type="type"
+        ></img-demo>
       </div>
     </div>
   </div>
@@ -24,15 +54,48 @@
 
 <script>
 import itemDemo from "@/views/components/itemDemo.vue";
+import loginService from "@/services/comon.service";
 export default {
   components: { itemDemo },
   data() {
     return {
       input: "",
+      ywlx: "T003_Y001",
+      fileList: [],
     };
   },
-  mounted() {},
-  methods: {},
+  created() {
+    switch (this.$route.query.type) {
+      case "1":
+        this.ywlx = "T003_Y001";
+        break;
+      case "2":
+        this.ywlx = "T004_Y001";
+        break;
+      case "3":
+        this.ywlx = "T002_Y001";
+        break;
+      case "4":
+        this.ywlx = "T001_Y003";
+        break;
+      default:
+        break;
+    }
+  },
+  mounted() {
+    this.getList();
+  },
+  methods: {
+    async getList() {
+      let res = await loginService.listFileInfo({
+        ywlx: this.ywlx,
+        ywbs: this.input,
+      });
+      if (res.status == 0) {
+        this.fileList = res.data.records;
+      }
+    },
+  },
 };
 </script>
 

@@ -210,10 +210,12 @@ export default {
      * 上传图片
      */
     postFile(file) {
+      console.log(file);
+      // return false;
       return new Promise((resolve, reject) => {
         if (this.type == "file") {
-          this.formdata = new FormData();
-          this.formdata.append("multipartFile", file.file);
+          this.formdata = file.file;
+          // this.formdata.append("multipartFile", file.file);
           resolve();
         } else {
           let params = {

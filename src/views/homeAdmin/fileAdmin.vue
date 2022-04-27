@@ -12,11 +12,15 @@
           {{ scope.$index + 1 }}
         </template>
       </el-table-column>
-      <el-table-column label="标题" width="350" prop="ywbs"> </el-table-column>
+      <el-table-column label="标题" width="250" prop="ywbs"> </el-table-column>
+      <el-table-column label="水印" width="250" prop="syxx"> </el-table-column>
       <el-table-column label="操作" width="200">
         <template slot-scope="scope">
           <el-button type="text" size="small" @click="addSy(scope.row)"
             >添加水印</el-button
+          >
+          <el-button type="text" size="small" @click="update(scope.row)"
+            >查看</el-button
           >
           <el-button type="text" size="small" @click="deleteImg(scope.row)"
             >删除</el-button
@@ -27,13 +31,24 @@
     <el-dialog title="新增" :visible.sync="dialogFormVisible" width="500px">
       <el-form :model="form">
         <el-form-item label="标题：" label-width="80px">
-          <el-input v-model="form.ywbs" autocomplete="off"></el-input>
+          <el-input
+            :disabled="disabled"
+            v-model="form.ywbs"
+            autocomplete="off"
+          ></el-input>
         </el-form-item>
         <el-form-item label="封面：" label-width="80px" v-show="fmywlx">
-          <img-upload ref="imgUpload" :ywlx="fmywlx" :id="id" />
+          <img-upload
+            v-if="!disabled"
+            ref="imgUpload"
+            :ywlx="fmywlx"
+            :id="id"
+          />
+          <img v-else class="imgClass" :src="$showPic(id)" alt="" />
         </el-form-item>
         <el-form-item label="文件：" label-width="80px">
           <img-upload
+            :disabled="disabled"
             ref="fileUpload"
             type="file"
             :ywlx="fileywlx"
@@ -42,7 +57,11 @@
           />
         </el-form-item>
         <el-form-item label="水印：" label-width="80px">
-          <el-input v-model="form.syxx" autocomplete="off"></el-input>
+          <el-input
+            :disabled="disabled"
+            v-model="form.syxx"
+            autocomplete="off"
+          ></el-input>
         </el-form-item>
       </el-form>
       <div slot="footer" class="dialog-footer">
@@ -82,14 +101,21 @@ export default {
         fmpath: "",
         syxx: "",
       },
+      disabled: false,
       id: "",
       dialogFormVisible: false,
     };
   },
   methods: {
     add() {
+      this.disabled = false;
       this.id = "";
-      this.form.id = "";
+      this.form = {
+        ywlx: this.fileywlx,
+        id: "",
+        fmpath: "",
+        syxx: "",
+      };
       this.dialogFormVisible = true;
     },
     async getList() {
@@ -132,31 +158,102 @@ export default {
         });
     },
     update(row) {
+      this.disabled = true;
       this.id = row.fmpath;
       this.form = row;
       this.dialogFormVisible = true;
     },
     save() {
-      console.log(this.$refs.imgUpload);
       this.form.fmpath =
         this.$refs.imgUpload.fileList.length > 0
-          ? this.$refs.imgUpload.fileList[0].response?.id
+          ? this.$refs.imgUpload.fileList[0].response?.filepath
           : "";
       let formdata = this.$refs.fileUpload.formdata;
-      loginService
-        .fileUpload(this.form, formdata)
-        .then((res) => {
+      if (!formdata) {
+        return this.$message.error("必须上传文件");
+      }
+      let that = this;
+      let identifier = new Date().getTime();
+      let name = formdata.name;
+      let size = formdata.size; //总大小
+      let shardSize = 2 * 1024 * 1024; //以2MB为一个分片
+      let shardCount = Math.ceil(size / shardSize);
+      let attr = [];
+      for (let i = 0; i < shardCount; ++i) {
+        attr.push(i);
+      }
+      const loading = this.$loading({
+        lock: true,
+        text: "Loading",
+        spinner: "el-icon-loading",
+        background: "rgba(0, 0, 0, 0.7)",
+      });
+      let currentNumber = 0;
+      attr.map((item) => {
+        //数据进行的处理 item 为原始数据数组的元素
+        let start = item * shardSize; //当前分片开始下标
+        let end = Math.min(size, start + shardSize); //结束下标
+        //构造一个表单，FormData是HTML5新增的
+        let form = new FormData();
+        form.append("file", formdata.slice(start, end)); //slice方法用于切出文件的一部分
+        form.append("identifier", identifier);
+        form.append("currentChunk", item + 1);
+        form.append("totalChunks", shardCount);
+        loginService.chunkUpload(form).then((res) => {
           if (res.status == 0) {
-            this.$message.success("保存成功");
-            this.dialogFormVisible = false;
-            this.getList();
-          } else {
-            this.$message.error(res.message);
+            currentNumber = currentNumber + 1;
+            if (currentNumber == shardCount) {
+              loading.close();
+              //合并请求
+              let data = {
+                identifier: identifier,
+                totalSize: size,
+                filename: name,
+                chunkSize: shardSize,
+                totalChunks: shardCount,
+              };
+              that.mergeFile(this.fileywlx, data);
+            }
           }
-        })
-        .catch((err) => {
-          this.$message.error(err);
         });
+      });
+
+      // loginService
+      //   .fileUpload(this.form, formdata)
+      //   .then((res) => {
+      //     loading.close();
+      //     if (res.status == 0) {
+      //       this.$message.success("保存成功");
+      //       this.dialogFormVisible = false;
+      //       this.getList();
+      //     } else {
+      //       this.$message.error(res.message);
+      //     }
+      //   })
+      //   .catch((err) => {
+      //     this.$message.error(err);
+      //   });
+    },
+    async mergeFile(identifier, data) {
+      let res = await loginService.mergeFile(identifier, data);
+      if (res.status == 0) {
+        this.updateFileInfo(res.data);
+      } else {
+        this.$message.error(res.message);
+      }
+    },
+    async updateFileInfo(data) {
+      data.fmpath = this.form.fmpath;
+      data.ywbs = this.form.ywbs;
+      data.syxx = this.form.syxx;
+      let res = await loginService.updateFileInfo(data);
+      if (res.status == 0) {
+        this.$message.success("上传成功");
+        this.dialogFormVisible = false;
+        this.getList();
+      } else {
+        this.$message.error(res.message);
+      }
     },
   },
   mounted() {
@@ -202,5 +299,9 @@ export default {
   width: 128px;
   height: 128px;
   display: block;
+}
+.imgClass {
+  width: 200px;
+  height: 200px;
 }
 </style>

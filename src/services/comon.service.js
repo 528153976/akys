@@ -49,7 +49,11 @@ const loginService = {
 		return axios.request({
 			url: MICRO_CONFIG.api + 'file/listFileInfo',
 			method: 'post',
-			data: data,
+			data: {
+				...data,
+				pageSize: 999,
+				pageNum: 1
+			},
 			responseType: 'json'
 		})
 	},
@@ -67,6 +71,33 @@ const loginService = {
 			params: {
 				id
 			},
+			responseType: 'json'
+		})
+	},
+	chunkUpload(data) {
+		return axios.request({
+			url: MICRO_CONFIG.api + 'chunk/chunkUpload',
+			method: 'post',
+			data: data,
+			responseType: 'json'
+		})
+	},
+	mergeFile(ywlx, data) {
+		return axios.request({
+			url: MICRO_CONFIG.api + 'chunk/mergeFile',
+			method: 'post',
+			params: {
+				ywlx
+			},
+			data: data,
+			responseType: 'json'
+		})
+	},
+	updateFileInfo(data) {
+		return axios.request({
+			url: MICRO_CONFIG.api + 'file/updateFileInfo',
+			method: 'post',
+			data: data,
 			responseType: 'json'
 		})
 	},
