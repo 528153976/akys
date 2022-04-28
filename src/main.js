@@ -14,7 +14,16 @@ import ElementUI from 'element-ui';
 import 'element-ui/lib/theme-chalk/index.css';
 Vue.use(ElementUI)
 import store from "./store"
-
+if (localStorage.getItem('code') == 10) {
+  router.addRoute("home", {
+    path: "/homeAdmin",
+    name: "homeAdmin",
+    component: () => import("@/views/homeAdmin/main.vue"),
+    meta: {
+      requireAuth: false, // 判断是否需要登录
+    },
+  });
+}
 router.beforeEach((to, from, next) => {
   if (to.matched.some((com) => com.meta.requireAuth)) {
     // 需要登录

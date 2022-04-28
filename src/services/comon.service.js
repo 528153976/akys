@@ -45,13 +45,13 @@ const loginService = {
 			responseType: 'json'
 		})
 	},
-	listFileInfo(data) {
+	listFileInfo(data, pageSize = 999) {
 		return axios.request({
 			url: MICRO_CONFIG.api + 'file/listFileInfo',
 			method: 'post',
 			data: {
 				...data,
-				pageSize: 999,
+				pageSize: pageSize,
 				pageNum: 1
 			},
 			responseType: 'json'

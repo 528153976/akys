@@ -1,7 +1,7 @@
 <template>
   <div class="itemDemo">
     <div class="itemImg" @click="open()">
-      <img :src="$showPic(fmImg)" alt="" />
+      <img :src="$showPic(fmpath)" alt="" />
       <div class="itemWrap">
         <i class="el-icon-video-play" v-if="type == 1"></i>
         <i class="el-icon-video-play" v-if="type == 2"></i>
@@ -64,10 +64,12 @@ export default {
         // "https://video-c.ldycdn.com/ipBklKqllrr-inipKBllrqRliSlojlnrpnmmjkr-6a525ea8b8ab45e3afa274656e792b81.mp4";
         break;
       case "3":
-        this.fmywlx = "T002_Y003";
+        // this.fmywlx = "T002_Y003";
+        this.fmpath = this.value.fmpath;
         this.iframeUrl = this.$showPic(this.value?.filepath, true);
         break;
       case "4":
+        this.fmpath = this.value?.filepath;
         this.fmImg = this.value?.filepath;
         break;
       default:
@@ -78,6 +80,7 @@ export default {
     return {
       fmywlx: "",
       fmImg: "",
+      fmpath: "",
       iframeUrl: "",
       dialogVisible: false,
       url: "https://fuss10.elemecdn.com/e/5d/4a731a90594a4af544c0c25941171jpeg.jpeg",
@@ -88,20 +91,20 @@ export default {
     };
   },
   mounted() {
-    this.getFmimg();
+    // this.getFmimg();
   },
   methods: {
     open() {
       this.dialogVisible = true;
     },
     async getFmimg() {
-      if (this.value?.fmpath && this.fmywlx) {
+      if (this.fmywlx) {
         let res = await loginService.listFileInfo({
-          id: this.value?.fmpath,
+          id: this.value?.id,
           ywlx: this.fmywlx,
         });
         if (res.status == 0) {
-          this.fmImg =
+          this.fmpath =
             (res.data.records || []).length > 0
               ? res.data.records[0].filepath
               : "";

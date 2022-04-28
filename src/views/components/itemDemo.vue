@@ -60,7 +60,7 @@ export default {
         // "https://video-c.ldycdn.com/ipBklKqllrr-inipKBllrqRliSlojlnrpnmmjkr-6a525ea8b8ab45e3afa274656e792b81.mp4";
         break;
       case "3":
-        this.fmywlx = "T002_Y003";
+        // this.fmywlx = "T002_Y003";
         this.iframeUrl = this.$showPic(this.value?.filepath, true);
         break;
       case "4":
@@ -91,7 +91,7 @@ export default {
       this.dialogVisible = true;
     },
     async getFmimg() {
-      if (this.value?.fmpath && this.fmywlx) {
+      if (this.fmywlx) {
         let res = await loginService.listFileInfo({
           id: this.value?.fmpath,
           ywlx: this.fmywlx,

@@ -2,7 +2,7 @@
   <div class="homeInfo">
     <div class="homeWrap">
       <div class="homeSearch">
-        <el-input
+        <!-- <el-input
           placeholder="请输入标题关键词"
           class="homeInput"
           v-model="input"
@@ -10,7 +10,7 @@
           <i slot="prefix" class="el-input__icon el-icon-search"></i> </el-input
         ><el-button type="success" class="homeBtn" @click="getList()"
           >立即搜索</el-button
-        >
+        > -->
       </div>
       <div class="homeList" v-if="type == 1">
         <item-demo
@@ -55,17 +55,19 @@
 <script>
 import itemDemo from "@/views/components/itemDemo.vue";
 import loginService from "@/services/comon.service";
+import imgDemo from "@/views/components/imgDemo.vue";
 export default {
-  components: { itemDemo },
+  components: { itemDemo, imgDemo },
   data() {
     return {
       input: "",
       ywlx: "T003_Y001",
       fileList: [],
+      type: this.$route.query.type,
     };
   },
   created() {
-    switch (this.$route.query.type) {
+    switch (this.type) {
       case "1":
         this.ywlx = "T003_Y001";
         break;

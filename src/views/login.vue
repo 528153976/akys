@@ -58,8 +58,8 @@ export default {
             background: "rgba(0, 0, 0, 0.7)",
           });
           let res = await loginService.login(this.formLabelAlign);
+          loading.close();
           if (res.status == 0) {
-            loading.close();
             if (res.data?.role == 0) {
               router.addRoute("home", {
                 path: "/homeAdmin",

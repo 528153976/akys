@@ -39,12 +39,12 @@
         </el-form-item>
         <el-form-item label="封面：" label-width="80px" v-show="fmywlx">
           <img-upload
-            v-if="!disabled"
+            v-show="!disabled"
             ref="imgUpload"
             :ywlx="fmywlx"
             :id="id"
           />
-          <img v-else class="imgClass" :src="$showPic(id)" alt="" />
+          <img v-show="disabled" class="imgClass" :src="$showPic(id)" alt="" />
         </el-form-item>
         <el-form-item label="文件：" label-width="80px">
           <img-upload
@@ -108,6 +108,8 @@ export default {
   },
   methods: {
     add() {
+      this.dialogFormVisible = true;
+      console.log(this.$refs.imgUpload);
       this.disabled = false;
       this.id = "";
       this.form = {
@@ -116,7 +118,8 @@ export default {
         fmpath: "",
         syxx: "",
       };
-      this.dialogFormVisible = true;
+      this.$refs.imgUpload.fileList = [];
+      this.$refs.fileUpload.fileList = [];
     },
     async getList() {
       let res = await loginService.listFileInfo({ ywlx: this.fileywlx });
