@@ -119,7 +119,7 @@ export default {
   cursor: pointer;
   .itemImg {
     width: 100%;
-    height: 300px;
+    height: 220px;
     position: relative;
     .itemWrap {
       width: 100%;
@@ -132,7 +132,7 @@ export default {
       color: #65b7ff;
       font-size: 80px;
       text-align: center;
-      line-height: 300px;
+      line-height: 220px;
       cursor: pointer;
       display: none;
     }
@@ -151,7 +151,7 @@ export default {
     text-align: center;
     font-size: 20px;
     font-weight: 700;
-    line-height: 56px;
+    line-height: 50px;
     overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;

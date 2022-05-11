@@ -1,7 +1,7 @@
 <template>
   <div class="homeMain">
     <head-nav />
-    <keep-alive :include="aliveList">
+    <keep-alive>
       <router-view />
     </keep-alive>
     <tailInfo />
@@ -18,7 +18,7 @@ export default {
   },
   data() {
     return {
-      aliveList: [],
+      aliveList: ["homePage"],
     };
   },
   provide() {

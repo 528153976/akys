@@ -16,8 +16,9 @@
             placeholder="请输入手机号"
           ></el-input>
         </el-form-item>
-        <el-form-item label="ID号" prop="code">
+        <el-form-item label="密码" prop="code">
           <el-input
+            type="password"
             v-model="formLabelAlign.code"
             prefix-icon="el-icon-postcard"
             placeholder="请输入ID号"

@@ -19,10 +19,10 @@
       align="center"
       v-loading="loading"
     >
-      <el-table-column prop="code" label="ID号" width="250"> </el-table-column>
       <el-table-column prop="name" label="姓名" width="250"> </el-table-column>
       <el-table-column prop="phone" label="手机号" width="250">
       </el-table-column>
+      <el-table-column prop="code" label="密码" width="250"> </el-table-column>
       <el-table-column prop="role" label="权限" width="250">
         <template slot-scope="scope">
           {{ scope.row.role == 0 ? "管理员" : "普通权限" }}
@@ -47,18 +47,18 @@
     </el-table>
     <el-dialog title="新增账号" :visible.sync="dialogFormVisible" width="550px">
       <el-form :model="form">
-        <el-form-item label="ID号：" label-width="80px">
-          <el-input v-model="form.code">
-            <template slot="append">
-              <span style="cursor: pointer" @click="generate()">生成</span>
-            </template>
-          </el-input>
-        </el-form-item>
         <el-form-item label="姓名：" label-width="80px">
           <el-input v-model="form.name"></el-input>
         </el-form-item>
         <el-form-item label="手机号：" label-width="80px">
           <el-input v-model="form.phone"></el-input>
+        </el-form-item>
+        <el-form-item label="密码：" label-width="80px">
+          <el-input v-model="form.code">
+            <!-- <template slot="append">
+              <span style="cursor: pointer" @click="generate()">生成</span>
+            </template> -->
+          </el-input>
         </el-form-item>
         <el-form-item label="权限：" label-width="80px">
           <el-select v-model="form.role" placeholder="请选择活动区域">
