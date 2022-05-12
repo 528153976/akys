@@ -116,12 +116,43 @@ export default {
       ],
     };
   },
-  mounted() {
-    this.getSwiperList();
-    this.getVideoList();
-    this.getAudioList();
-    this.getFileList();
-    this.getImgList();
+  async activated() {
+    const loading = this.$loading({
+      lock: true,
+      text: "Loading",
+      spinner: "el-icon-loading",
+      background: "rgba(0, 0, 0, 0.7)",
+    });
+    await this.getSwiperList();
+    await this.getVideoList();
+    await this.getAudioList();
+    await this.getFileList();
+    await this.getImgList();
+    this.$nextTick(() => {
+      setTimeout(() => {
+        loading.close();
+        console.log("加载好了");
+      }, 3000);
+    });
+  },
+  async mounted() {
+    const loading = this.$loading({
+      lock: true,
+      text: "拼命加载中",
+      spinner: "el-icon-loading",
+      background: "rgba(0, 0, 0, 0.7)",
+    });
+    await this.getSwiperList();
+    await this.getVideoList();
+    await this.getAudioList();
+    await this.getFileList();
+    await this.getImgList();
+    this.$nextTick(() => {
+      setTimeout(() => {
+        loading.close();
+        console.log("加载好了");
+      }, 0);
+    });
   },
   methods: {
     more(type) {

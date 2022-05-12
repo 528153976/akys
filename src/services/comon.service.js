@@ -49,8 +49,8 @@ const loginService = {
 		return axios.request({
 			url: MICRO_CONFIG.api + 'file/listFileInfo',
 			method: 'post',
-			data: {
-				...data,
+			data: data,
+			params: {
 				pageSize: pageSize,
 				pageNum: 1
 			},
