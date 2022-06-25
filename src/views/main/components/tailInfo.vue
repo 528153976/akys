@@ -5,7 +5,7 @@
       <span>|</span>
       帮助中心
     </div>
-    <div class="tailAbout">CopyRight @ 爱康优申</div>
+    <div class="tailAbout">CopyRight @ 留学助手</div>
   </div>
 </template>
 <script>

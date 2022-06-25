@@ -7,9 +7,11 @@
         alt=""
         @click="$router.push('/homePage')"
       />
-      <div v-if="isShow">
-        <p class="btn" @click="$router.push('/homePage')">首页</p>
-        <p class="btn" @click="$router.push('/homeAdmin')">管理端</p>
+      <div>
+        <p class="btn" v-if="isShow" @click="$router.push('/homePage')">首页</p>
+        <p class="btn" v-if="isShow" @click="$router.push('/homeAdmin')">
+          管理端
+        </p>
         <p class="btn" @click="exit">退出登录</p>
       </div>
     </div>
@@ -22,6 +24,11 @@ export default {
     return {
       isShow: localStorage.getItem("code") == 10 ? true : false,
     };
+  },
+  watch: {
+    $route(val) {
+      this.isShow = localStorage.getItem("code") == 10 ? true : false;
+    },
   },
   methods: {
     exit() {
